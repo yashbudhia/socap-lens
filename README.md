@@ -12,6 +12,7 @@ Social Capital does not amplify the product. It amplifies the founder's life sto
 - The highest-reach wave posts are greentext founder biographies ("be Karan Goel, spawn in Delhi"), not product reviews. In four of the five launches where the biography followed the hero post it was the most-viewed post in the wave, and median views on a biography are about 4x the median for every other wave post.
 - One account, @kritarthmittal, appears in 7 of 9 launch waves and wrote the greentext in 5 of them. Six other creator accounts appear in two or more.
 - In the one launch with enough public posts to see the whole week, Wispr Flow, the wave is bimodal: a burst in the first 24 hours, quiet on days three and four, then a second product-angle burst on day five with eight posts between +95.8h and +98.5h. The other launches are too thinly sampled to say whether this is the rule.
+- LinkedIn runs in parallel: the four founder LinkedIn posts the search found went up within seven minutes of the X post with the same text and video, the LinkedIn wave retells the founder's life story in prose, and four wave posts carry LinkedIn's Brand partnership tag. Gamma's head of growth described the campaign publicly a week later.
 - Reach does not depend on the founder's follower count. Median views per follower on the hero post is 236x, against 10x for nine comparable launches with no agency.
 
 ## What is in here
@@ -21,6 +22,7 @@ Social Capital does not amplify the product. It amplifies the founder's life sto
 - `scripts/fetch-posts.mjs` fetches public metrics for a list of x.com URLs from the fxtwitter API.
 - `scripts/urls.mjs <slug>` turns `data/wave_<slug>.txt` (one x.com path per line) into a fetched `data/wave_<slug>.posts.json`.
 - `scripts/lag.mjs <slug> <hero ISO time>` prints a wave sorted by hours after the hero post.
+- `scripts/fetch-linkedin.mjs` runs one LinkedIn post search per launch through monid.ai (needs `MONID_API_KEY`, billed per result), and `scripts/build-linkedin.mjs` normalises the raw results into `data/linkedin.json`.
 - `data/launches.json` is the seed: the nine case studies and their hero post IDs.
 - `data/baseline.json` is the comparison set.
 
@@ -38,6 +40,7 @@ python -m http.server 8787            # open http://localhost:8787
 - Metrics come from api.fxtwitter.com, which returns views, likes, replies, reposts, quotes, bookmarks, author followers and media duration without auth.
 - Wave posts were found with X search in a date window after each hero post, filtered to 20 or more likes. X returns one reliable page per query, so each wave is a sample of the most engaged posts, not a census. Wispr Flow also merges URLs from a public dataset another applicant compiled (github.com/atzgg132/waveline-socap); every post was re-fetched here.
 - The comparison set is nine launch posts from Cluely, Manus, Cognition and Cursor, chosen for being well known. Views per follower is the fair comparison, raw views are not.
-- Public data cannot show who was paid or who wrote what. LinkedIn is not publicly searchable, so the LinkedIn half of their distribution is not covered.
+- LinkedIn posts come from twelve HarvestAPI searches via monid.ai, thirty results each, kept if they fell between two days before and two weeks after the X hero post. Even more of a sample than the X side.
+- Public data cannot show who wrote what. On LinkedIn a few posts carry the platform's Brand partnership tag; X has no equivalent.
 
 Not affiliated with Social Capital Inc.

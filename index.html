@@ -103,6 +103,18 @@ a.post:hover{border-color:var(--rule-2);box-shadow:0 6px 24px rgba(26,27,31,.06)
 .twins{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px;align-items:start}
 @media (max-width:640px){.twins{grid-template-columns:1fr}}
 
+/* x vs linkedin pairs */
+.pairs{display:grid;gap:0}
+.pairs .pr{display:grid;grid-template-columns:100px 1fr 1fr;gap:12px;padding:12px 0;border-top:1px solid var(--rule);align-items:center;font-size:14px}
+.pairs .pr:first-child{border-top:0;padding-top:0}
+.pairs .pr .c{font-weight:500}
+.pairs .pr .x,.pairs .pr .li{line-height:1.4}
+.pairs .pr small{display:block;color:var(--ink-3);font-size:12.5px}
+.pairs .pr b{font-weight:600}
+.pairs .pr .li b{color:var(--blue-ink)}
+@media (max-width:520px){.pairs .pr{grid-template-columns:1fr;gap:4px;padding:14px 0}}
+.post .bp{display:inline-block;font-size:11px;font-weight:600;padding:2px 7px;border-radius:4px;background:#EEF0F3;color:var(--ink-2);margin-left:8px;vertical-align:1px}
+
 /* roster matrix */
 .matrix{display:grid;gap:4px;font-size:13.5px;align-items:center;min-width:0}
 .matrix .h{writing-mode:vertical-rl;transform:rotate(180deg);color:var(--ink-2);font-size:12.5px;padding:2px 0 8px;align-self:end;white-space:nowrap}
@@ -176,7 +188,7 @@ footer a{color:var(--ink-2)}
 
 <header class="hero col">
   <h1>Anatomy of a viral launch</h1>
-  <p class="dek"><b>Social Capital</b> <a href="https://www.linkedin.com/posts/vedikabhaia_ive-been-building-social-capital-inc-quietly-activity-7380928680258093056-zKNu" target="_blank" rel="noopener">promises five million views</a> on any product launch. I pulled every launch they list publicly to see how they actually do it. Nine launches, 97 posts, one pattern.</p>
+  <p class="dek"><b>Social Capital</b> <a href="https://www.linkedin.com/posts/vedikabhaia_ive-been-building-social-capital-inc-quietly-activity-7380928680258093056-zKNu" target="_blank" rel="noopener">promises five million views</a> on any product launch. I pulled every launch they list publicly to see how they actually do it. Nine launches, <span id="dek-counts">170 posts on X and LinkedIn</span>, one pattern.</p>
 </header>
 
 <section class="ch col" id="c1">
@@ -228,6 +240,20 @@ footer a{color:var(--ink-2)}
   </figure>
 </div>
 
+<section class="ch col" id="c6li">
+  <p class="k">Sixth</p>
+  <h2>LinkedIn gets the same post minutes later. And a label.</h2>
+  <p class="big" id="li-copy"></p>
+  <figure class="card">
+    <div class="pairs" id="li-pairs"></div>
+    <figcaption>The four founder LinkedIn posts the search surfaced, next to the X post from the same founder. Reactions on LinkedIn, likes on X.</figcaption>
+  </figure>
+  <p class="big" style="margin-top:32px">The LinkedIn wave tells the same life stories in prose instead of greentext. Some of it carries LinkedIn's own "Brand partnership" tag, which is the one place in public where the arrangement is disclosed.</p>
+  <div class="twins" id="li-cards"></div>
+  <p class="big" style="margin-top:32px">And on LinkedIn the client side talks. A week after Gamma's launch, its head of growth described the campaign herself.</p>
+  <div id="li-quote"></div>
+</section>
+
 <section class="ch col" id="c6">
   <p class="k">The result</p>
   <h2>Reach that has nothing to do with follower count.</h2>
@@ -245,7 +271,7 @@ footer a{color:var(--ink-2)}
 <section class="ch col" id="c7">
   <p class="k">So</p>
   <h2>They launch the founder, not the product.</h2>
-  <p class="big">A founder's account, an early-week slot, a biography instead of a review, a roster that repeats, and in the one launch we can see in full, a second wave when everyone else had moved on. None of it is visible from any single post. All of it is visible from nine.</p>
+  <p class="big">A founder's account, an early-week slot, the same post on LinkedIn minutes later, a biography instead of a review, a roster that repeats, and in the one launch we can see in full, a second wave when everyone else had moved on. None of it is visible from any single post. All of it is visible from nine.</p>
 </section>
 
 <section class="ch wide" id="data">
@@ -263,14 +289,19 @@ footer a{color:var(--ink-2)}
     <div class="tablewrap"><table id="posts-table"></table></div>
   </details>
   <details>
+    <summary>Every LinkedIn post found <span class="sum" id="li-count"></span></summary>
+    <div class="tablewrap"><table id="li-table"></table></div>
+  </details>
+  <details>
     <summary>How this was made, and what it cannot show</summary>
     <div class="method" style="margin-top:8px">
       <div><h3>Launch list</h3><p>The nine case studies on sociallcapital.com/work as of 15 September 2026. Each page embeds one hero post, and that post anchors everything else.</p></div>
       <div><h3>Numbers</h3><p>From the public fxtwitter API, which returns views, likes, replies, reposts, bookmarks, author followers and video length without a login. Fetched on <span id="gen"></span>, so older launches have had longer to accumulate.</p></div>
       <div><h3>Wave posts</h3><p>Found with X search limited to a date window after each hero post, the product or founder name, and 20 or more likes. X returns one reliable page per query, so each wave is a sample of the most engaged posts, not a census. Wispr Flow also merges URLs from a public dataset another applicant compiled (<a href="https://github.com/atzgg132/waveline-socap" target="_blank" rel="noopener">waveline-socap</a>); every post was re-fetched here.</p></div>
+      <div><h3>LinkedIn posts</h3><p>One LinkedIn post search per launch (twelve searches in all, thirty results each, sorted by relevance) through the HarvestAPI scraper on monid.ai, total cost <span id="li-cost"></span>. Posts were kept if they landed between two days before and two weeks after the X hero post. LinkedIn search is even more of a sample than X search, so treat every LinkedIn count as a floor.</p></div>
       <div><h3>Comparison set</h3><p>Nine AI launch posts from company or founder accounts with no known agency: Cluely, Manus, Devin and Cursor. Picked for being well known, not for matching size, which is why views per follower is the fair measure.</p></div>
       <div><h3>Founder biography</h3><p>A post written as greentext lines starting with "be", the 4chan life-story format. Detected by pattern, then read by hand.</p></div>
-      <div><h3>What this cannot show</h3><p>Whether any account was paid. Which posts were written in-house. LinkedIn, where Social Capital says most of its reach is, is not publicly searchable. The roster overlap and the biography pattern are visible in public data; the mechanism behind them is inferred.</p></div>
+      <div><h3>What this cannot show</h3><p>Which posts were written in-house. Whether the X accounts were paid; on LinkedIn a few posts carry the platform's Brand partnership tag, on X there is no equivalent. The roster overlap and the biography pattern are visible in public data; the mechanism behind them is inferred.</p></div>
     </div>
   </details>
 </section>
@@ -314,7 +345,7 @@ function dodge(items, x, r, pad){
   return out;
 }
 
-fetch('data.json').then(r=>r.json()).then(D=>{
+Promise.all([fetch('data.json').then(r=>r.json()), fetch('data/linkedin.json').then(r=>r.json()).catch(()=>null)]).then(([D, LI])=>{
   const L=D.launches, B=D.baseline, S=D.stats;
   document.getElementById('gen').textContent = new Date(D.generated_at).toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
   document.getElementById('n-lore').textContent = fmt(S.wave.median_lore_views);
@@ -408,6 +439,26 @@ fetch('data.json').then(r=>r.json()).then(D=>{
     const hits=row.append('rect').attr('x',ml).attr('y',d=>y(d.label)-y.step()/2).attr('width',W-ml-mr).attr('height',y.step()).attr('fill','transparent');
     bindTip(hits, d=>`<b>${esc(d.label)}</b>${esc(d.sub)}<br>${Math.round(d.x)} views per follower`);
     whenVisible(svg.node(), ()=>{ const t=d3.transition().duration(reduced?0:900).ease(d3.easeCubicOut); stems.transition(t).attr('x2',d=>x(d.x)); dots.transition(t).attr('cx',d=>x(d.x)); vals.transition(t).attr('opacity',1); });
+  })();
+
+  // ---- LinkedIn ----
+  if (LI) (function(){
+    const heroes=LI.launches.filter(l=>l.linkedin_hero);
+    const allLi=LI.launches.flatMap(l=>[...(l.linkedin_hero?[{...l.linkedin_hero,client:l.client,hero:true}]:[]),...l.wave.map(p=>({...p,client:l.client}))]);
+    const bp=allLi.filter(p=>p.brand_partnership&&!p.hero);
+    const xCount=L.reduce((n,l)=>n+l.wave.length,0);
+    document.getElementById('dek-counts').textContent=`${xCount} posts on X and ${allLi.length} on LinkedIn`;
+    const maxMin=Math.max(...heroes.map(l=>Math.abs(l.linkedin_hero.lag_h*60)));
+    document.getElementById('li-copy').textContent=`The search surfaced the founder's own LinkedIn post for ${['','one','two','three','four','five'][heroes.length]} of the nine launches. Every one went up within ${Math.ceil(maxMin)} minutes of the X post, with the same words and the same video. On LinkedIn the founder post drew more reactions than likes on X in ${heroes.filter(l=>l.linkedin_hero.likes>l.x_hero.likes).length} of the ${heroes.length}.`;
+    document.getElementById('li-pairs').innerHTML=heroes.map(l=>{const h=l.linkedin_hero;const m=Math.round(h.lag_h*60);return `<div class="pr"><div class="c">${esc(l.client)}</div><div class="x"><b>${fmt(l.x_hero.likes)}</b> likes, ${fmt(l.x_hero.replies)} replies<small>X, @${esc(l.x_hero.author)}, ${l.x_hero.created_at.slice(11,16)} UTC</small></div><div class="li"><b>${fmt(h.likes)}</b> reactions, ${fmt(h.comments)} comments<small><a href="${esc(h.url)}" target="_blank" rel="noopener">LinkedIn</a>, ${m===0?'same minute':(m>0?m+' min later':(-m)+' min earlier')}</small></div></div>`;}).join('');
+    const liCard=(p,when)=>{const av=p.avatar_url?`<img src="${esc(p.avatar_url)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.textContent='${esc((p.author||'?').slice(0,1))}'">`:esc((p.author||'?').slice(0,1));const date=new Date(p.at).toLocaleString('en-GB',{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit',timeZone:'UTC'})+' UTC';const lines=(p.text||'').split(String.fromCharCode(10)).filter(x=>x.trim());const body=esc(lines.slice(0,9).join(String.fromCharCode(10))+(lines.length>9?String.fromCharCode(10)+'...':''));return `<a class="post" href="${esc(p.url)}" target="_blank" rel="noopener"><div class="hd"><div class="av">${av}</div><div><div class="nm">${esc(p.author)}${p.brand_partnership?'<span class="bp">Brand partnership</span>':''}</div><div class="hn">${esc((p.author_info||'').replace(/^Brand partnership\s*[•·]\s*/i,'').slice(0,70))}</div></div></div><div class="bd">${body}</div><div class="when">${date}${when?', '+when:''}</div><div class="mt"><span>${ICONS.like}<b>${fmt(p.likes)}</b></span><span>${ICONS.reply}<b>${fmt(p.comments)}</b></span><span>${ICONS.repost}<b>${fmt(p.shares)}</b></span></div></a>`;};
+    const pick=(client,re)=>{const l=LI.launches.find(x=>x.client===client);return l&&l.wave.find(p=>re.test(p.author));};
+    const cards=[[pick('Deel',/Elana Gold/),'day 1 of the Deel launch'],[pick('Airwallex',/Naughton/),'day 2 of the Airwallex launch']].filter(x=>x[0]);
+    document.getElementById('li-cards').innerHTML=cards.map(([p,w])=>liCard(p,w)).join('');
+    const q=pick('Gamma',/Fracchia/); if(q) document.getElementById('li-quote').innerHTML=liCard({...q,text:q.text.split(String.fromCharCode(10)).filter(x=>x.trim()).slice(0,12).join(String.fromCharCode(10))},'day 8 of the Gamma launch');
+    document.getElementById('li-count').textContent=allLi.length+' posts, '+bp.length+' tagged Brand partnership';
+    document.getElementById('li-table').innerHTML=`<thead><tr><th>Launch</th><th class="num">Hours after X hero</th><th>Author</th><th class="num">Reactions</th><th class="num">Comments</th><th>Tag</th><th>Text</th></tr></thead><tbody>${allLi.sort((a,b)=>a.client.localeCompare(b.client)||a.lag_h-b.lag_h).map(p=>`<tr><td>${esc(p.client)}</td><td class="num">${p.lag_h>0?'+':''}${p.lag_h}</td><td><a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.author)}</a></td><td class="num">${fmt(p.likes)}</td><td class="num">${fmt(p.comments)}</td><td>${p.hero?'<span class="tag">founder</span>':p.brand_partnership?'<span class="tag amber">brand partnership</span>':''}</td><td class="txt">${esc((p.text||'').slice(0,200))}</td></tr>`).join('')}</tbody>`;
+    document.getElementById('li-cost').textContent=LI.cost_usd!=null?('USD '+LI.cost_usd.toFixed(2)):'under USD 8';
   })();
 
   // ---- tables ----

@@ -1,4 +1,6 @@
-node_modules/
 .DS_Store
-preview.png
 chrome-err.txt
+data/linkedin/raw_*.json
+data/linkedin/test_*.json
+node_modules/
+preview.png
