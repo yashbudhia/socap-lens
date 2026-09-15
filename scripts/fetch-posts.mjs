@@ -7,7 +7,7 @@ const prev = fs.existsSync(outFile) ? JSON.parse(fs.readFileSync(outFile, 'utf8'
 const out = { ...prev };
 for (const u of urls) {
   const id = (u.match(/status\/(\d+)/) || [])[1];
-  if (!id || out[id]) continue;
+  if (!id || (out[id] && (out[id].avatar_url || out[id].error))) continue;
   try {
     const r = await fetch(`https://api.fxtwitter.com/status/${id}`);
     const j = await r.json();
@@ -15,7 +15,7 @@ for (const u of urls) {
     const t = j.tweet;
     out[id] = {
       id, url: t.url, author: t.author.screen_name, author_name: t.author.name, followers: t.author.followers,
-      author_desc: t.author.description, created_at: new Date(t.created_timestamp * 1000).toISOString(),
+      author_desc: t.author.description, avatar_url: t.author.avatar_url, created_at: new Date(t.created_timestamp * 1000).toISOString(),
       views: t.views, likes: t.likes, replies: t.replies, retweets: t.retweets, quotes: t.quotes, bookmarks: t.bookmarks,
       text: t.text, lang: t.lang, is_note: !!t.is_note_tweet,
       media: (t.media?.all || []).map(m => ({ type: m.type, duration: m.duration || null })),

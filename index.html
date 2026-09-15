@@ -3,101 +3,124 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Launch Ledger</title>
-<meta name="description" content="Every public Social Capital Inc launch, its hero post, and the creator wave around it, rebuilt from public X data. One finding about how they actually work.">
-<meta property="og:title" content="Launch Ledger">
-<meta property="og:description" content="Nine Social Capital launches, 97 wave posts, one finding: they amplify the founder, not the product.">
+<title>Anatomy of a viral launch</title>
+<meta name="description" content="Social Capital promises millions of views on any product launch. Nine launches, rebuilt from public X data, show how they do it.">
+<meta property="og:title" content="Anatomy of a viral launch">
+<meta property="og:description" content="Nine Social Capital launches, rebuilt from public data. They launch the founder, not the product.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
 <style>
 :root{
-  --paper:#F6F7F9;--surface:#FFFFFF;--rule:#E4E7EC;--rule-2:#CBD0D9;
-  --ink:#171A21;--ink-2:#5C6371;--ink-3:#8A909C;
-  --blue:#1D4ED8;--blue-2:#93B4F5;--blue-soft:#E8EFFD;
-  --amber:#D97706;--amber-soft:#FDF0DC;
-  --gray:#AEB4C0;
+  --paper:#F7F7F5;--surface:#FFFFFF;--rule:#E6E6E2;--rule-2:#CFCFC9;
+  --ink:#1A1B1F;--ink-2:#5F6169;--ink-3:#8E9099;
+  --blue:#2450D9;--blue-ink:#1A3FB0;--blue-soft:#E9EEFC;
+  --amber:#D98A0B;--amber-ink:#8F5A00;--amber-soft:#FBF1DD;
+  --gray:#B9BBC2;
   --display:"Bricolage Grotesque",system-ui,sans-serif;
   --body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --measure:72ch;
 }
 *{box-sizing:border-box}
-html{background:var(--paper);scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-body{margin:0;font:16px/1.6 var(--body);color:var(--ink);background:var(--paper);font-feature-settings:"tnum" 1,"cv11" 1;padding:0 20px;padding-block:0 96px}
-a{color:var(--blue);text-decoration:underline;text-decoration-color:var(--blue-2);text-underline-offset:3px}
-a:hover{text-decoration-color:var(--blue)}
+html{background:var(--paper);-webkit-text-size-adjust:100%}
+body{margin:0;font:17px/1.6 var(--body);color:var(--ink);background:var(--paper);font-feature-settings:"tnum" 1,"cv11" 1;padding:0 20px;padding-block:0 80px}
+a{color:var(--blue-ink);text-decoration:underline;text-decoration-color:#B9C6F1;text-underline-offset:3px}
+a:hover{text-decoration-color:var(--blue-ink)}
 :focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:2px}
-.wrap{max-width:1080px;margin:0 auto;min-width:0}
-main.wrap{overflow-x:clip}
-.prose{max-width:var(--measure)}
+.col{max-width:680px;margin:0 auto}
+.wide{max-width:1040px;margin:0 auto}
 
-/* nav */
-nav.top{position:sticky;top:0;z-index:20;background:rgba(246,247,249,.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--rule);margin:0 -20px;padding:0 20px}
-nav.top .in{max-width:1080px;margin:0 auto;display:flex;align-items:center;gap:20px;height:52px}
-nav.top .brand{font-family:var(--display);font-weight:700;font-size:17px;letter-spacing:-.01em;color:var(--ink);text-decoration:none;white-space:nowrap}
-nav.top ul{list-style:none;margin:0 0 0 auto;padding:0;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
-nav.top ul::-webkit-scrollbar{display:none}
-nav.top li a{display:block;padding:6px 10px;border-radius:6px;font-size:13.5px;color:var(--ink-2);text-decoration:none;white-space:nowrap}
-nav.top li a:hover,nav.top li a.on{color:var(--ink);background:#fff;box-shadow:0 0 0 1px var(--rule)}
+/* top line */
+.topline{max-width:1040px;margin:0 auto;display:flex;justify-content:space-between;gap:16px;padding:18px 0;font-size:13.5px;color:var(--ink-3)}
+.topline a{color:var(--ink-2);text-decoration:none}
+.topline a:hover{color:var(--ink)}
 
 /* hero */
-.hero{padding:64px 0 40px}
-.hero h1{font-family:var(--display);font-size:clamp(40px,7vw,84px);line-height:.98;letter-spacing:-.035em;font-weight:700;margin:0 0 20px;font-variation-settings:"opsz" 96;max-width:14ch}
-.hero .lede{font-size:clamp(17px,2vw,20px);line-height:1.5;color:var(--ink-2);margin:0;max-width:60ch}
-.hero .lede a{color:var(--ink)}
-.hero-fig{margin:40px 0 0;background:var(--surface);border:1px solid var(--rule);border-radius:12px;padding:20px 20px 12px}
-.hero-fig .cap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13.5px;color:var(--ink-2);margin:0 0 6px}
-.hero-fig .cap strong{color:var(--ink);font-weight:600}
-.meta{font-size:13.5px;color:var(--ink-3);margin:14px 0 0}
+.hero{padding:56px 0 24px}
+.hero h1{font-family:var(--display);font-size:clamp(42px,7.5vw,88px);line-height:.96;letter-spacing:-.035em;font-weight:700;margin:0 0 22px;font-variation-settings:"opsz" 96}
+.hero .dek{font-size:clamp(18px,2.2vw,22px);line-height:1.45;color:var(--ink-2);margin:0;max-width:34ch}
+.hero .dek b{color:var(--ink);font-weight:600}
 
-/* sections */
-section{padding:56px 0 8px}
-section+section{border-top:1px solid var(--rule);margin-top:48px}
-h2{font-family:var(--display);font-size:clamp(26px,3.4vw,36px);line-height:1.1;letter-spacing:-.025em;font-weight:600;margin:0 0 14px;font-variation-settings:"opsz" 48}
-h3{font-family:var(--display);font-size:19px;letter-spacing:-.01em;font-weight:600;margin:0 0 6px}
-p{margin:0 0 14px}
-.sub{color:var(--ink-2);max-width:var(--measure)}
-
-/* finding */
-.finding{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:40px;align-items:start}
-@media (max-width:820px){.finding{grid-template-columns:1fr;gap:24px}}
-.finding .claim{font-family:var(--display);font-size:clamp(22px,2.8vw,30px);line-height:1.2;letter-spacing:-.02em;font-weight:600;margin:0 0 18px;font-variation-settings:"opsz" 36}
-.finding ol{margin:0;padding:0;list-style:none;counter-reset:pt}
-.finding ol li{position:relative;padding:12px 0 12px 44px;border-top:1px solid var(--rule);color:var(--ink);line-height:1.5}
-.finding ol li:last-child{border-bottom:1px solid var(--rule)}
-.finding ol li::before{counter-increment:pt;content:counter(pt);position:absolute;left:0;top:11px;width:28px;height:28px;border-radius:50%;background:var(--blue-soft);color:var(--blue);font-weight:600;font-size:13px;display:grid;place-items:center}
-.compare{margin-top:28px;border:1px solid var(--rule);border-radius:12px;background:var(--surface);overflow:hidden}
-.compare .hd,.compare .r{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr) minmax(0,1fr);gap:12px;padding:12px 18px;align-items:baseline}
-.compare .hd{font-size:13px;color:var(--ink-2);border-bottom:1px solid var(--rule);background:var(--paper)}
-.compare .r{border-top:1px solid var(--rule)}
-.compare .r:first-of-type{border-top:0}
-.compare .r .k{font-size:14.5px;color:var(--ink)}
-.compare .r .k small{display:block;color:var(--ink-3);font-size:12.5px;margin-top:2px}
-.compare .v{font-family:var(--display);font-weight:600;font-size:clamp(22px,2.6vw,28px);letter-spacing:-.02em;line-height:1;font-variation-settings:"opsz" 32}
-.compare .v.b{color:var(--blue)}.compare .v.g{color:var(--ink-3)}
-@media (max-width:560px){.compare .hd,.compare .r{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr) minmax(0,1fr);padding:10px 14px}.compare .v{font-size:19px}}
-
-/* figure chrome */
-figure{margin:0;background:var(--surface);border:1px solid var(--rule);border-radius:12px;padding:18px 18px 10px}
-figure .legend{display:flex;gap:18px;flex-wrap:wrap;font-size:13px;color:var(--ink-2);margin:0 0 8px}
-figure .legend span{display:inline-flex;align-items:center;gap:7px}
-figure .legend i{width:10px;height:10px;border-radius:50%;background:var(--c);display:inline-block}
-figure .legend i.sq{border-radius:2px;width:6px;height:14px}
-figure figcaption{font-size:13px;color:var(--ink-3);margin:6px 0 2px}
+/* chapters */
+.ch{padding:64px 0 0}
+.ch .k{font-family:var(--display);font-weight:600;font-size:15px;color:var(--blue-ink);letter-spacing:-.01em;margin:0 0 10px}
+.ch h2{font-family:var(--display);font-size:clamp(28px,4vw,44px);line-height:1.05;letter-spacing:-.03em;font-weight:700;margin:0 0 16px;font-variation-settings:"opsz" 60}
+.ch p{margin:0 0 14px}
+.ch p.big{font-size:clamp(18px,2vw,20px);line-height:1.5}
+.ch .note{font-size:14.5px;color:var(--ink-2)}
+figure{margin:28px 0 0;padding:0}
+figure.card{background:var(--surface);border:1px solid var(--rule);border-radius:14px;padding:20px 20px 14px}
+figcaption{font-size:13.5px;color:var(--ink-3);margin:10px 0 0;line-height:1.5}
+.legend{display:flex;gap:18px;flex-wrap:wrap;font-size:13px;color:var(--ink-2);margin:0 0 6px}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+.legend i{width:11px;height:11px;border-radius:50%;background:var(--c);display:inline-block;opacity:.85}
+.legend i.bar{width:2px;height:14px;border-radius:1px;opacity:1}
 svg.chart{width:100%;height:auto;display:block;font-family:var(--body);overflow:visible}
 svg.chart text{fill:var(--ink-2);font-size:12.5px}
-svg.chart .lab{fill:var(--ink);font-weight:500}
+svg.chart .lab{fill:var(--ink);font-weight:500;font-size:13px}
 svg.chart .faint{fill:var(--ink-3)}
 svg.chart .grid line{stroke:var(--rule)}
-svg.chart .axis path,svg.chart .axis line{stroke:var(--rule-2)}
-.tip{position:fixed;pointer-events:none;background:var(--ink);color:#fff;padding:9px 11px;border-radius:8px;font-size:12.5px;line-height:1.45;max-width:340px;z-index:30;display:none;box-shadow:0 8px 24px rgba(23,26,33,.18)}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:#fff;padding:10px 12px;border-radius:10px;font-size:12.5px;line-height:1.45;max-width:340px;z-index:30;display:none;box-shadow:0 10px 30px rgba(26,27,31,.2)}
 .tip b{display:block;margin-bottom:2px;font-weight:600}
-.tip .q{opacity:.78;white-space:pre-wrap;margin-top:4px}
+.tip .q{opacity:.75;white-space:pre-wrap;margin-top:5px}
+
+/* big number pair */
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0 0}
+.pair>div{padding:18px 0 0;border-top:2px solid var(--ink)}
+.pair>div.g{border-top-color:var(--rule-2)}
+.pair .n{font-family:var(--display);font-weight:700;font-size:clamp(36px,5vw,56px);letter-spacing:-.03em;line-height:1;font-variation-settings:"opsz" 72}
+.pair .g .n{color:var(--ink-3)}
+.pair .l{font-size:14px;color:var(--ink-2);margin-top:8px}
+
+/* hero bars */
+.bars{display:flex;flex-direction:column;gap:6px}
+.bar-row{display:grid;grid-template-columns:96px 1fr;grid-template-rows:auto auto;column-gap:12px;align-items:center;text-decoration:none;color:var(--ink);padding:4px 0}
+.bar-row:hover .bl{color:var(--blue-ink)}
+.bar-row .bl{grid-row:1/3;font-weight:500;font-size:14px;text-align:right}
+.bar-row .bt{height:12px;border-radius:6px;background:var(--paper);overflow:hidden}
+.bar-row .bt i{display:block;height:100%;border-radius:6px;background:var(--blue);opacity:.85;transition:width .9s cubic-bezier(.2,.7,.2,1)}
+.bar-row .bt i.g{background:var(--gray)}
+.bar-row .bv{font-size:12.5px;color:var(--ink-3);line-height:1.3;margin-top:3px}
+.bar-row .bv b{color:var(--ink);font-weight:500}
+@media (max-width:480px){.bar-row{grid-template-columns:78px 1fr}.bar-row .bl{font-size:13px}}
+
+/* post cards */
+.post{background:var(--surface);border:1px solid var(--rule);border-radius:16px;padding:16px 18px 14px;font-size:15px;line-height:1.5;color:var(--ink);text-decoration:none;display:block}
+a.post:hover{border-color:var(--rule-2);box-shadow:0 6px 24px rgba(26,27,31,.06)}
+.post .hd{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.post .av{width:40px;height:40px;border-radius:50%;background:var(--paper);object-fit:cover;flex:0 0 40px;display:grid;place-items:center;font-weight:600;color:var(--ink-2);font-size:14px;overflow:hidden}
+.post .av img{width:100%;height:100%;object-fit:cover;display:block}
+.post .nm{font-weight:600;line-height:1.2}
+.post .hn{font-size:13.5px;color:var(--ink-3);line-height:1.2}
+.post .bd{white-space:pre-line;overflow-wrap:anywhere}
+.post .bd .gt{color:#2E6B22}
+.post .when{font-size:13px;color:var(--ink-3);margin-top:10px}
+.post .mt{display:flex;gap:18px;font-size:13px;color:var(--ink-2);margin-top:8px;padding-top:10px;border-top:1px solid var(--rule)}
+.post .mt span{display:inline-flex;align-items:center;gap:6px}
+.post .mt svg{width:15px;height:15px;stroke:var(--ink-3);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.post .mt b{font-weight:500;color:var(--ink)}
+.twins{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px;align-items:start}
+@media (max-width:640px){.twins{grid-template-columns:1fr}}
+
+/* roster matrix */
+.matrix{display:grid;gap:4px;font-size:13.5px;align-items:center;min-width:0}
+.matrix .h{writing-mode:vertical-rl;transform:rotate(180deg);color:var(--ink-2);font-size:12.5px;padding:2px 0 8px;align-self:end;white-space:nowrap}
+.matrix .a{white-space:nowrap;padding-right:12px;overflow:hidden;text-overflow:ellipsis}
+.matrix .a a{text-decoration:none;color:var(--ink);font-weight:500}
+.matrix .a small{color:var(--ink-3);margin-left:6px}
+.matrix .c{height:26px;border-radius:6px;background:var(--paper)}
+.matrix .c.on{background:var(--blue);opacity:.85}
+.matrix .c.lore{background:var(--amber)}
+.scrollx{overflow-x:auto}
 
 /* tables */
-.tablewrap{background:var(--surface);border:1px solid var(--rule);border-radius:12px;overflow:auto;max-height:600px}
+details{border-top:1px solid var(--rule);padding:18px 0}
+details summary{cursor:pointer;font-family:var(--display);font-weight:600;font-size:19px;letter-spacing:-.01em;list-style:none;display:flex;align-items:center;gap:10px}
+details summary::-webkit-details-marker{display:none}
+details summary::before{content:"";width:8px;height:8px;border-right:2px solid var(--ink-2);border-bottom:2px solid var(--ink-2);transform:rotate(-45deg);transition:transform .2s}
+details[open] summary::before{transform:rotate(45deg)}
+details .sum{font-size:14px;color:var(--ink-3);font-weight:400;font-family:var(--body);margin-left:auto}
+.tablewrap{background:var(--surface);border:1px solid var(--rule);border-radius:14px;overflow:auto;max-height:620px;margin-top:16px}
 table{width:100%;border-collapse:separate;border-spacing:0;font-size:13.5px}
 th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--rule);vertical-align:top;line-height:1.4}
 th{position:sticky;top:0;background:var(--surface);z-index:1;font-weight:600;color:var(--ink-2);font-size:12.5px;white-space:nowrap;cursor:pointer;user-select:none;box-shadow:inset 0 -1px 0 var(--rule)}
@@ -106,239 +129,293 @@ th[data-sort]::after{content:"";display:inline-block;width:0;height:0;margin-lef
 th.asc::after{border-top-color:transparent;border-bottom-color:var(--ink);margin-bottom:4px}
 th.desc::after{border-top-color:var(--ink)}
 tbody tr:last-child td{border-bottom:0}
-tbody tr:hover td{background:#FAFBFD}
 td a{text-decoration:none;color:var(--ink);font-weight:500;border-bottom:1px solid var(--rule-2)}
 td a:hover{border-color:var(--blue);color:var(--blue)}
-.tag{display:inline-block;font-size:11.5px;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--blue-soft);color:var(--blue);vertical-align:1px}
-.tag.amber{background:var(--amber-soft);color:#9A5200}
-.tag.gray{background:#EEF0F3;color:var(--ink-2)}
+.tag{display:inline-block;font-size:11.5px;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--blue-soft);color:var(--blue-ink);vertical-align:1px}
+.tag.amber{background:var(--amber-soft);color:var(--amber-ink)}
+.tag.gray{background:#EEEEEB;color:var(--ink-2)}
 .quiet{color:var(--ink-3)}
 .txt{color:var(--ink-2);white-space:pre-line;min-width:280px;max-width:520px;font-size:13px}
+.filters{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:16px 0 0}
+.filters label{font-size:13px;color:var(--ink-2);display:flex;align-items:center;gap:8px}
+select,input[type=search]{font:inherit;font-size:14px;padding:8px 10px;border:1px solid var(--rule-2);border-radius:8px;background:var(--surface);color:var(--ink);min-height:38px}
+input[type=search]{flex:1;min-width:180px}
+.count{font-size:13px;color:var(--ink-3);margin-left:auto}
 @media (max-width:760px){
   .ledger table,.ledger thead,.ledger tbody,.ledger tr,.ledger td{display:block}
   .ledger thead{display:none}
   .ledger tr{padding:10px 14px;border-bottom:1px solid var(--rule)}
-  .ledger td{border:0;padding:3px 0;display:flex;justify-content:space-between;gap:12px;text-align:left}
-  .ledger td.num{text-align:right}
-  .ledger td::before{content:attr(data-h);color:var(--ink-3);font-size:12.5px;flex:0 0 46%}
+  .ledger td{border:0;padding:3px 0;display:flex;justify-content:space-between;gap:12px}
+  .ledger td::before{content:attr(data-h);color:var(--ink-3);font-size:12.5px;flex:0 0 46%;text-align:left}
   .ledger td.title{display:block;font-family:var(--display);font-size:18px;font-weight:600;padding:2px 0 6px}
   .ledger td.title::before{display:none}
   .ledger td.lo{display:none}
-  .ledger td::before{text-align:left}
-  .ledger td.num{justify-content:space-between}
 }
 @media (max-width:600px){svg.chart .m-hide{display:none}}
 
-/* roster */
-.roster{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:20px}
-.roster figure{overflow-x:auto;min-width:0}
-@media (max-width:820px){.roster{grid-template-columns:1fr}}
-.matrix{display:grid;gap:3px;font-size:13px;align-items:center}
-.matrix .h{writing-mode:vertical-rl;transform:rotate(180deg);color:var(--ink-2);font-size:12px;padding:2px 0 6px;align-self:end;white-space:nowrap}
-.matrix .a{white-space:nowrap;padding-right:10px;overflow:hidden;text-overflow:ellipsis}
-.matrix .a a{text-decoration:none;color:var(--ink);font-weight:500}
-.matrix .a small{color:var(--ink-3);margin-left:6px}
-.matrix .c{height:24px;border-radius:4px;background:var(--paper);border:1px solid var(--rule)}
-.matrix .c.on{background:var(--blue);border-color:var(--blue)}
-.matrix .c.lore{background:var(--amber);border-color:var(--amber)}
-.twin{padding:12px 0;border-top:1px solid var(--rule)}
-.twin:first-of-type{border-top:0;padding-top:0}
-.twin .who{font-size:13px;color:var(--ink-2);margin-bottom:4px}
-.twin .who a{text-decoration:none;color:var(--ink);font-weight:500}
-.twin blockquote{margin:0;padding:0 0 0 14px;border-left:2px solid var(--amber);color:var(--ink);font-size:14.5px;white-space:pre-line}
-
-/* filters */
-.filters{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:0 0 14px}
-.filters label{font-size:13px;color:var(--ink-2);display:flex;align-items:center;gap:8px}
-select,input[type=search]{font:inherit;font-size:14px;padding:8px 10px;border:1px solid var(--rule-2);border-radius:8px;background:var(--surface);color:var(--ink);min-height:38px}
-input[type=search]{flex:1;min-width:200px}
-.count{font-size:13px;color:var(--ink-3);margin-left:auto}
-
 /* method */
-.method{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:8px 40px;max-width:1000px}
+.method{display:grid;grid-template-columns:1fr 1fr;gap:6px 36px}
+@media (max-width:640px){.method{grid-template-columns:1fr}}
 .method div{padding:14px 0;border-top:1px solid var(--rule)}
-.method h3{font-size:16px;margin-bottom:4px}
+.method h3{font-family:var(--display);font-size:16px;margin:0 0 4px;font-weight:600}
 .method p{color:var(--ink-2);font-size:14.5px;margin:0}
-
-footer{margin-top:64px;padding-top:24px;border-top:1px solid var(--rule);color:var(--ink-3);font-size:13.5px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer{margin-top:64px;padding-top:22px;border-top:1px solid var(--rule);color:var(--ink-3);font-size:13.5px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 footer a{color:var(--ink-2)}
 
-/* motion */
 @media (prefers-reduced-motion:no-preference){
-  .hero h1,.hero .lede,.hero-fig{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
-  .hero .lede{animation-delay:.08s}.hero-fig{animation-delay:.16s}
-  @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  .hero h1,.hero .dek{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+  .hero .dek{animation-delay:.1s}
+  @keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 }
 </style>
 </head>
 <body>
 <div class="tip" id="tip" role="tooltip"></div>
 
-<nav class="top" aria-label="Sections"><div class="in">
-  <a class="brand" href="#top">Launch Ledger</a>
-  <ul>
-    <li><a href="#finding">Finding</a></li>
-    <li><a href="#ledger">Ledger</a></li>
-    <li><a href="#reach">Reach</a></li>
-    <li><a href="#clock">Clock</a></li>
-    <li><a href="#wave">Wave</a></li>
-    <li><a href="#roster">Roster</a></li>
-    <li><a href="#posts">Posts</a></li>
-    <li><a href="#method">Method</a></li>
-  </ul>
-</div></nav>
+<div class="topline"><span>A public data study</span><a href="https://github.com/yashbudhia/socap-lens" target="_blank" rel="noopener">Source and data</a></div>
 
-<main class="wrap" id="top">
-
-<header class="hero">
-  <h1>They launch the founder, not the product.</h1>
-  <p class="lede">Every launch <a href="https://www.sociallcapital.com/work" target="_blank" rel="noopener">Social Capital Inc</a> lists publicly, its hero post, and the creator wave that follows, rebuilt from public X data and set against nine launches that ran without them.</p>
-  <figure class="hero-fig">
-    <div class="cap"><span><strong>Wispr Flow, February 2026.</strong> Public posts in the seven days after the hero post, by hours elapsed. Dot size is views.</span><span id="hero-status" class="quiet"></span></div>
-    <svg id="hero-chart" class="chart" viewBox="0 0 1040 250" role="img" aria-label="Timeline of the Wispr Flow launch wave"></svg>
-    <div class="legend" style="margin:8px 0 0"><span><i style="--c:var(--blue)"></i>Wave post</span><span><i style="--c:var(--amber)"></i>Founder biography (greentext)</span><span><i class="sq" style="--c:var(--ink)"></i>Hero post by the founder</span></div>
-  </figure>
-  <p class="meta" id="meta"></p>
+<header class="hero col">
+  <h1>Anatomy of a viral launch</h1>
+  <p class="dek"><b>Social Capital</b> promises five million views on any product launch. I pulled every launch they list publicly to see how they actually do it. Nine launches, 97 posts, one pattern.</p>
 </header>
 
-<section id="finding">
-  <h2>The finding</h2>
-  <div class="finding">
-    <div>
-      <p class="claim">Social Capital does not amplify the product. It amplifies the founder's life story, on a schedule, through a small recurring roster.</p>
-      <p class="sub">The hero post sits on the founder's personal account in seven of nine launches. The highest-reach posts in the wave are not product reviews but greentext biographies of the founder, written in the same voice across launches by the same handful of accounts. The wave has two peaks: a lore burst in the first day, then a product-angle burst on day five, often landing inside a three-hour window.</p>
-    </div>
-    <ol id="points"></ol>
-  </div>
-  <div class="compare" id="compare"></div>
+<section class="ch col" id="c1">
+  <p class="k">First</p>
+  <h2>The post goes out from the founder, not the company.</h2>
+  <p class="big">Seven of the nine launches open with a post on the founder's personal account. Not the brand handle, not a press release. A person, a video, and usually a funding number.</p>
+  <p class="note">Hover a row for the post.</p>
+  <figure class="card"><div class="bars" id="hero-list"></div><figcaption>Bar length is views on the hero post. Blue means the founder posted it, gray means the company account did.</figcaption></figure>
 </section>
 
-<section id="ledger">
-  <h2>Launch ledger</h2>
-  <p class="sub">All nine case studies on the Social Capital work page, with the hero post's current public numbers. Sort by any column.</p>
-  <div class="tablewrap ledger"><table id="ledger-table"></table></div>
+<section class="ch col" id="c2">
+  <p class="k">Second</p>
+  <h2>It goes out on a Monday, before lunch in New York.</h2>
+  <p class="big">Eight of nine hero posts land on a Monday or Tuesday. All nine go live between 13:00 and 18:00 UTC. That is mid-morning on the US east coast and evening in India, and it leaves the rest of the week for what comes next.</p>
+  <figure class="card">
+    <div class="legend"><span><i style="--c:var(--blue)"></i>Social Capital launch</span><span><i style="--c:var(--gray)"></i>Launches with no agency</span></div>
+    <svg id="clock-chart" class="chart" viewBox="0 0 640 320" role="img" aria-label="Day of week and hour of each hero post"></svg>
+    <figcaption>The gray dots are nine well-known AI launches that ran without an agency: Cluely, Manus, Devin and Cursor.</figcaption>
+  </figure>
 </section>
 
-<section id="reach">
-  <h2>Reach does not follow the founder's follower count</h2>
-  <p class="sub">Views on the hero post divided by the author's followers. A launch with no distribution network usually gets 5 to 50 views per follower. Social Capital launches from accounts with 7,000 to 40,000 followers get 100 to 400. The gap is the network.</p>
-  <figure>
-    <div class="legend"><span><i style="--c:var(--blue)"></i>Social Capital launch</span><span><i style="--c:var(--gray)"></i>Comparison launch, no agency</span></div>
+<section class="ch col" id="c3">
+  <p class="k">Third</p>
+  <h2>Then someone tells the founder's life story.</h2>
+  <p class="big">Within a day, a post appears that says nothing about the product. It is the founder's biography, written as greentext, and it usually beats every product post in the wave.</p>
+  <div class="pair"><div><div class="n" id="n-lore"></div><div class="l">median views on a founder biography</div></div><div class="g"><div class="n" id="n-other"></div><div class="l">median views on every other post in the wave</div></div></div>
+  <figure><div id="green"></div><figcaption>Posted under an hour after the Cartesia hero post. Biographies like this appear in six of the nine launches.</figcaption></figure>
+</section>
+
+<section class="ch col" id="c4">
+  <p class="k">Fourth</p>
+  <h2>The same people show up every time.</h2>
+  <p class="big">Eight accounts appear in more than one launch. One of them, <a href="https://x.com/kritarthmittal" target="_blank" rel="noopener">@kritarthmittal</a>, appears in seven of nine and wrote the biography in five. Amber marks the launches where an account wrote the greentext.</p>
+  <figure class="card scrollx"><div class="matrix" id="matrix"></div></figure>
+  <div class="twins" id="twins"></div>
+  <p class="note" style="margin-top:12px">Two accounts, one brief. From the Cartesia launch, 46 hours apart.</p>
+</section>
+
+<section class="ch col" id="c5">
+  <p class="k">Fifth</p>
+  <h2>And the wave comes back on day five.</h2>
+  <p class="big">A launch is not a day. After the first burst the timeline goes quiet, then on day five a second set of posts lands almost together. In the Wispr Flow launch, eight accounts posted inside three hours, four days after the founder.</p>
+</section>
+<div class="wide">
+  <figure class="card">
+    <div class="legend"><span><i style="--c:var(--blue)"></i>Post about the launch</span><span><i style="--c:var(--amber)"></i>Founder biography</span><span><i style="--c:var(--gray)"></i>Reply or quote</span><span><i class="bar" style="--c:var(--ink)"></i>Hero post</span></div>
+    <svg id="wave-chart" class="chart" viewBox="0 0 1040 640" role="img" aria-label="Posts about each launch by hours after the hero post"></svg>
+    <figcaption>Dot size is views. Hover or tap for the post. Wispr Flow is the fullest row because it was collected from two sources. Other rows show what X search surfaces per window, so gaps are unknown rather than empty. Pre-launch posts and the founder's own thread are left out.</figcaption>
+  </figure>
+</div>
+
+<section class="ch col" id="c6">
+  <p class="k">The result</p>
+  <h2>Reach that has nothing to do with follower count.</h2>
+  <p class="big">Divide a hero post's views by its author's followers. A launch on its own usually gets 5 to 50 views per follower. Social Capital launches from accounts with under 40,000 followers get 100 to 400. That gap is the network.</p>
+  <div class="pair"><div><div class="n" id="n-vpf"></div><div class="l">median views per follower, Social Capital launches</div></div><div class="g"><div class="n" id="n-vpf-b"></div><div class="l">median views per follower, launches with no agency</div></div></div>
+</section>
+<div class="wide">
+  <figure class="card">
+    <div class="legend"><span><i style="--c:var(--blue)"></i>Social Capital launch</span><span><i style="--c:var(--gray)"></i>Launch with no agency</span></div>
     <svg id="reach-chart" class="chart" viewBox="0 0 1040 500" role="img" aria-label="Views per follower for each launch"></svg>
     <figcaption>Log scale. Airwallex is the outlier because its hero post was a Stripe acquisition story, not a product.</figcaption>
   </figure>
+</div>
+
+<section class="ch col" id="c7">
+  <p class="k">So</p>
+  <h2>They launch the founder, not the product.</h2>
+  <p class="big">A founder's account, an early-week slot, a biography instead of a review, a roster that repeats, and a second wave when everyone else has moved on. None of it is visible from any single post. All of it is visible from nine.</p>
 </section>
 
-<section id="clock">
-  <h2>The launch clock</h2>
-  <p class="sub">When each hero post went live. Eight of nine Social Capital posts land on a Monday or Tuesday, and all nine between 13:00 and 18:00 UTC, which is mid-morning in New York and evening in India. The comparison set is spread across the week. They front-load the week so the wave has Tuesday to Friday to run.</p>
-  <figure>
-    <div class="legend"><span><i style="--c:var(--blue)"></i>Social Capital</span><span><i style="--c:var(--gray)"></i>Comparison</span></div>
-    <svg id="clock-chart" class="chart" viewBox="0 0 1040 330" role="img" aria-label="Day of week and hour of each hero post"></svg>
-  </figure>
+<section class="ch wide" id="data">
+  <details>
+    <summary>The nine launches <span class="sum">hero post numbers, sortable</span></summary>
+    <div class="tablewrap ledger"><table id="ledger-table"></table></div>
+  </details>
+  <details>
+    <summary>Every wave post <span class="sum" id="f-count"></span></summary>
+    <div class="filters">
+      <label>Launch <select id="f-launch"><option value="">All</option></select></label>
+      <label>Kind <select id="f-kind"><option value="">All</option><option value="lore">Founder biography</option><option value="post">Post</option><option value="reply">Reply or quote</option></select></label>
+      <input type="search" id="f-q" placeholder="Search text or handle" aria-label="Search posts">
+    </div>
+    <div class="tablewrap"><table id="posts-table"></table></div>
+  </details>
+  <details>
+    <summary>How this was made, and what it cannot show</summary>
+    <div class="method" style="margin-top:8px">
+      <div><h3>Launch list</h3><p>The nine case studies on sociallcapital.com/work as of 15 September 2026. Each page embeds one hero post, and that post anchors everything else.</p></div>
+      <div><h3>Numbers</h3><p>From the public fxtwitter API, which returns views, likes, replies, reposts, bookmarks, author followers and video length without a login. Fetched on <span id="gen"></span>, so older launches have had longer to accumulate.</p></div>
+      <div><h3>Wave posts</h3><p>Found with X search limited to a date window after each hero post, the product or founder name, and 20 or more likes. X returns one reliable page per query, so each wave is a sample of the most engaged posts, not a census. Wispr Flow also merges URLs from a public dataset another applicant compiled (<a href="https://github.com/atzgg132/waveline-socap" target="_blank" rel="noopener">waveline-socap</a>); every post was re-fetched here.</p></div>
+      <div><h3>Comparison set</h3><p>Nine AI launch posts from company or founder accounts with no known agency: Cluely, Manus, Devin and Cursor. Picked for being well known, not for matching size, which is why views per follower is the fair measure.</p></div>
+      <div><h3>Founder biography</h3><p>A post written as greentext lines starting with "be", the 4chan life-story format. Detected by pattern, then read by hand.</p></div>
+      <div><h3>What this cannot show</h3><p>Whether any account was paid. Which posts were written in-house. LinkedIn, where Social Capital says most of its reach is, is not publicly searchable. The roster overlap and the biography pattern are visible in public data; the mechanism behind them is inferred.</p></div>
+    </div>
+  </details>
 </section>
 
-<section id="wave">
-  <h2>The wave, launch by launch</h2>
-  <p class="sub">Public posts about each launch by hours after the hero post. Amber is a greentext founder biography. Hover or tap a dot for the post. Wispr Flow is the most complete because it was collected from two sources; the others show what X search surfaces for each window, so read gaps as unknown rather than empty.</p>
-  <figure>
-    <div class="legend"><span><i style="--c:var(--blue)"></i>Wave post</span><span><i style="--c:var(--amber)"></i>Founder biography</span><span><i style="--c:var(--gray)"></i>Reply or quote</span><span><i class="sq" style="--c:var(--ink)"></i>Hero post</span></div>
-    <svg id="wave-chart" class="chart" viewBox="0 0 1040 620" role="img" aria-label="Wave posts per launch by hours after the hero post"></svg>
-    <figcaption>The hero account's own thread and pre-launch posts are left out of the chart and kept in the table below.</figcaption>
-  </figure>
-</section>
-
-<section id="roster">
-  <h2>The roster</h2>
-  <p class="sub">Accounts that appear in more than one launch wave. Amber marks the launch where that account wrote the greentext biography.</p>
-  <div class="roster">
-    <figure><div class="matrix" id="matrix"></div></figure>
-    <figure>
-      <h3>Same script, two accounts, 46 hours apart</h3>
-      <p class="sub" style="font-size:14px;margin-bottom:12px">From the Cartesia wave, day three and day five.</p>
-      <div id="twins"></div>
-    </figure>
-  </div>
-</section>
-
-<section id="posts">
-  <h2>Every wave post</h2>
-  <div class="filters">
-    <label>Launch <select id="f-launch"><option value="">All</option></select></label>
-    <label>Kind <select id="f-kind"><option value="">All</option><option value="lore">Founder biography</option><option value="post">Post</option><option value="reply">Reply or quote</option></select></label>
-    <input type="search" id="f-q" placeholder="Search text or handle" aria-label="Search posts">
-    <span class="count" id="f-count"></span>
-  </div>
-  <div class="tablewrap"><table id="posts-table"></table></div>
-</section>
-
-<section id="method">
-  <h2>Method and limits</h2>
-  <div class="method">
-    <div><h3>Launch list</h3><p>The nine case studies on sociallcapital.com/work as of 15 September 2026. Each page embeds one hero post, and that post is the anchor for everything else.</p></div>
-    <div><h3>Metrics</h3><p>From the public fxtwitter API, which returns views, likes, replies, reposts, quotes, bookmarks, author followers and video length without a login. Numbers are as of the date under the hero, so older launches have had longer to accumulate.</p></div>
-    <div><h3>Wave posts</h3><p>Found with X search restricted to a date window after each hero post, the product or founder name, and 20 or more likes. X returns one reliable page per query, so each wave is a sample of the most engaged posts, not a census. Wispr Flow also merges URLs from a public dataset another applicant compiled (<a href="https://github.com/atzgg132/waveline-socap" target="_blank" rel="noopener">waveline-socap</a>); every post was re-fetched and re-checked here.</p></div>
-    <div><h3>Comparison set</h3><p>Nine AI launch posts from company or founder accounts with no known agency: Cluely, Manus, Devin and Cursor. Picked for being well known, not for matching size. Views per follower is the fair comparison; raw views are not.</p></div>
-    <div><h3>What "founder biography" means</h3><p>A post whose body is greentext lines beginning with "be", the 4chan-style life story format. Detected by pattern, then read by hand.</p></div>
-    <div><h3>What this cannot show</h3><p>Whether any account was paid. Which posts were written in-house. LinkedIn, where Social Capital says most of its reach is, is not publicly searchable. The roster overlap and the biography pattern are visible in public data; the mechanism behind them is inferred.</p></div>
-  </div>
-</section>
-
-<footer>
-  <span>Built by Yash Budhia, September 2026. Not affiliated with Social Capital Inc. All data is public.</span>
+<footer class="wide">
+  <span>Yash Budhia, September 2026. Not affiliated with Social Capital Inc. All data is public.</span>
   <span><a href="https://github.com/yashbudhia/socap-lens" target="_blank" rel="noopener">Source and data on GitHub</a></span>
 </footer>
-</main>
 
 <script>
 const fmt = n => n == null ? '' : n >= 1e6 ? (n/1e6).toFixed(n>=1e7?0:1)+'M' : n >= 1e3 ? (n/1e3).toFixed(n>=1e4?0:1)+'K' : String(n);
 const pct = x => Math.round(x*100)+'%';
 const esc = s => String(s??'').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const ICONS={reply:'<svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-8 8H8l-5 3 1.5-4.5A8 8 0 1 1 21 12z"/></svg>',repost:'<svg viewBox="0 0 24 24"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>',like:'<svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>',views:'<svg viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-8"/><path d="M22 20H2"/></svg>'};
+function postCard(p, opts={}){
+  const date=new Date(p.created_at).toLocaleString('en-GB',{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit',timeZone:'UTC'})+' UTC';
+  const lines=(p.text||'').split(String.fromCharCode(10)).filter(x=>x.trim());
+  let body=esc(opts.maxLines?lines.slice(0,opts.maxLines).join(String.fromCharCode(10))+(lines.length>opts.maxLines?String.fromCharCode(10)+'...':''):(p.text||''));
+  body=body.replace(/^(&gt;.*)$/gm,'<span class="gt">$1</span>');
+  const av=p.avatar_url?`<img src="${esc(p.avatar_url)}" alt="" loading="lazy" referrerpolicy="no-referrer">`:esc((p.author_name||p.author||'?').slice(0,1).toUpperCase());
+  const m=`<span>${ICONS.reply}<b>${fmt(p.replies)}</b></span><span>${ICONS.repost}<b>${fmt(p.retweets)}</b></span><span>${ICONS.like}<b>${fmt(p.likes)}</b></span><span>${ICONS.views}<b>${fmt(p.views)}</b></span>`;
+  return `<a class="post" href="${esc(p.url)}" target="_blank" rel="noopener"><div class="hd"><div class="av">${av}</div><div><div class="nm">${esc(p.author_name||p.author)}</div><div class="hn">@${esc(p.author)}${p.followers?' · '+fmt(p.followers)+' followers':''}</div></div></div><div class="bd">${body}</div><div class="when">${date}${opts.when?', '+opts.when:''}</div><div class="mt">${m}</div></a>`;
+}
 const tip = document.getElementById('tip');
 function showTip(e, html){ tip.innerHTML = html; tip.style.display='block'; moveTip(e); }
 function moveTip(e){ const w = tip.offsetWidth, h = tip.offsetHeight; let x = e.clientX+14, y = e.clientY+14; if (x+w > innerWidth-8) x = Math.max(8, e.clientX-w-14); if (y+h > innerHeight-8) y = e.clientY-h-14; tip.style.left=x+'px'; tip.style.top=y+'px'; }
 function hideTip(){ tip.style.display='none'; }
 function bindTip(sel, html){ sel.on('mousemove', (e,d)=>showTip(e, html(d))).on('mouseleave', hideTip).on('touchstart', (e,d)=>{ e.preventDefault(); showTip(e.touches[0], html(d)); setTimeout(hideTip, 2500); }, {passive:false}); }
 const dayNames = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
-const whenVisible = (elm, fn) => { if (reduced || !('IntersectionObserver' in window)) return fn(); const io = new IntersectionObserver(es => { if (es.some(x=>x.isIntersecting)) { io.disconnect(); fn(); } }, {threshold:.25}); io.observe(elm); };
+const whenVisible = (elm, fn) => { if (reduced || !('IntersectionObserver' in window)) return fn(); const io = new IntersectionObserver(es => { if (es.some(x=>x.isIntersecting)) { io.disconnect(); fn(); } }, {threshold:.2}); io.observe(elm); };
+// beeswarm dodge along x: returns y offsets so circles do not overlap
+function dodge(items, x, r, pad){
+  const placed=[]; const out=[];
+  for(const d of items.sort((a,b)=>x(a)-x(b))){
+    const cx=x(d), rr=r(d)+pad; let y=0; let tries=0;
+    const collide=y=>placed.some(p=>{const dx=cx-p.x, dy=y-p.y; return dx*dx+dy*dy < (rr+p.r)*(rr+p.r);});
+    while(collide(y) && tries<60){ tries++; const k=Math.ceil(tries/2); y=(tries%2?1:-1)*k*3; }
+    placed.push({x:cx,y,r:rr}); out.push([d,y]);
+  }
+  return out;
+}
 
 fetch('data.json').then(r=>r.json()).then(D=>{
   const L=D.launches, B=D.baseline, S=D.stats;
-  const gen = new Date(D.generated_at);
-  document.getElementById('meta').textContent = `${L.length} launches, ${S.wave.posts} wave posts from ${S.wave.accounts} accounts, ${B.length} comparison launches. Numbers fetched ${gen.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'})}.`;
-
+  document.getElementById('gen').textContent = new Date(D.generated_at).toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
+  document.getElementById('n-lore').textContent = fmt(S.wave.median_lore_views);
+  document.getElementById('n-other').textContent = fmt(S.wave.median_other_views);
+  document.getElementById('n-vpf').textContent = Math.round(S.socap.median_views_per_follower)+'x';
+  document.getElementById('n-vpf-b').textContent = Math.round(S.baseline.median_views_per_follower)+'x';
   const roster = D.roster.filter(r=>r.launches.length>1);
-  const top = D.roster[0];
-  const founderN = L.filter(l=>l.hero_role==='founder').length;
-  const monTue = L.filter(l=>['Mon','Tue'].includes(l.hero.dow)).length;
 
-  // finding points
-  document.getElementById('points').innerHTML = [
-    `Founder biographies exist for ${S.wave.lore_launches} of ${L.length} launches. Median views on one: ${fmt(S.wave.median_lore_views)}. Median for every other wave post: ${fmt(S.wave.median_other_views)}.`,
-    `${roster.length} accounts appear in two or more waves. <a href="https://x.com/${top.author}" target="_blank" rel="noopener">@${top.author}</a> appears in ${top.launches.length} of ${L.length} and wrote the biography in ${top.lore} of them.`,
-    `Hero posts sit on the founder's own handle in ${founderN} of ${L.length} launches, and ${monTue} of ${L.length} go out on a Monday or Tuesday.`,
-    `Wave posts by day after the hero: ${Object.entries(S.wave.day_buckets).map(([d,n])=>`day ${+d+1}, ${n}`).join('; ')}. Days one and five carry it.`,
-  ].map(p=>`<li>${p}</li>`).join('');
+  // ---- 1. hero list: who posted, views ----
+  (function(){
+    const items=[...L].sort((a,b)=>b.hero.views-a.hero.views); const max=d3.max(items,d=>d.hero.views);
+    const x=d3.scaleLog().domain([8e5,max]).range([6,100]);
+    const el=document.getElementById('hero-list');
+    el.innerHTML=items.map(d=>`<a class="bar-row" href="${esc(d.hero.url)}" target="_blank" rel="noopener"><span class="bl">${esc(d.client)}</span><span class="bt"><i class="${d.hero_role==='founder'?'':'g'}" style="width:0%" data-w="${x(d.hero.views).toFixed(1)}"></i></span><span class="bv"><b>${fmt(d.hero.views)}</b> views, @${esc(d.hero.author)}${d.hero_role==='founder'?'':' (company account)'}</span></a>`).join('');
+    bindTip(d3.selectAll('#hero-list .bar-row').data(items), d=>`<b>${esc(d.client)}, @${esc(d.hero.author)}</b>${d.hero.created_at.slice(0,10)}, ${fmt(d.hero.followers)} followers<div class="q">${esc(d.hero.text.slice(0,200))}</div>`);
+    whenVisible(el, ()=>{ el.querySelectorAll('.bt i').forEach((i,k)=>{ i.style.transitionDelay=(reduced?0:k*60)+'ms'; i.style.width=i.dataset.w+'%'; }); });
+  })();
 
-  // comparison strip
-  const rows = [
-    ['Views per follower on the hero post','median', fmt(S.socap.median_views_per_follower)+'x', fmt(S.baseline.median_views_per_follower)+'x'],
-    ['Hero posts on a Monday or Tuesday','share of launches', `${monTue} of ${L.length}`, `${B.filter(l=>['Mon','Tue'].includes(l.hero.dow)).length} of ${B.length}`],
-    ['Replies per like','median; giveaways and "comment X" hooks raise it', pct(S.socap.median_reply_rate), pct(S.baseline.median_reply_rate)],
-    ['Hero video length','median', Math.round(S.socap.median_video_seconds)+'s', Math.round(S.baseline.median_video_seconds)+'s'],
-    ['Hero post views','median; comparison accounts are about 10x larger', fmt(S.socap.median_views), fmt(S.baseline.median_views)],
-  ];
-  document.getElementById('compare').innerHTML = `<div class="hd"><span>Measure</span><span>Social Capital</span><span>Comparison</span></div>` + rows.map(r=>`<div class="r"><div class="k">${r[0]}<small>${r[1]}</small></div><div class="v b">${r[2]}</div><div class="v g">${r[3]}</div></div>`).join('');
+  // ---- 2. clock ----
+  (function(){
+    const svg=d3.select('#clock-chart'); const W=640,H=320, ml=44, mr=10, mt=28, mb=52;
+    const x=d3.scaleLinear().domain([0,24]).range([ml,W-mr]); const y=d3.scaleBand().domain(dayNames).range([mt,H-mb]);
+    svg.append('rect').attr('x',x(13)).attr('y',mt).attr('width',x(18)-x(13)).attr('height',H-mt-mb).attr('fill','var(--blue)').attr('fill-opacity',.07).attr('rx',6);
+    const g=svg.append('g').attr('class','grid');
+    for(let h=0;h<=24;h+=6){ g.append('line').attr('x1',x(h)).attr('x2',x(h)).attr('y1',mt).attr('y2',H-mb); svg.append('text').attr('x',x(h)).attr('y',mt-10).attr('text-anchor',h===24?'end':h===0?'start':'middle').attr('class','faint').text(String(h).padStart(2,'0')+':00'); }
+    dayNames.forEach(d=>{ g.append('line').attr('x1',ml).attr('x2',W-mr).attr('y1',y(d)+y.bandwidth()).attr('y2',y(d)+y.bandwidth()); svg.append('text').attr('x',ml-10).attr('y',y(d)+y.bandwidth()/2+4).attr('text-anchor','end').attr('class','lab').text(d); });
+    svg.append('text').attr('x',x(13)).attr('y',H-mb+20).attr('class','faint').text('13:00 UTC is 9am in New York, 6:30pm in India');
+    svg.append('text').attr('x',x(18)).attr('y',H-mb+38).attr('text-anchor','end').attr('class','faint').text('18:00 UTC is 2pm in New York');
+    const pts=[...L.map(l=>({label:l.client,dow:l.hero.dow,h:l.hero.utc_hour,g:'socap',sub:l.hero.created_at.slice(0,16).replace('T',' ')+' UTC'})),...B.map(b=>({label:b.label,dow:b.hero.dow,h:b.hero.utc_hour,g:'base',sub:b.hero.created_at.slice(0,16).replace('T',' ')+' UTC'}))];
+    const seen={}; pts.forEach(p=>{const k=p.dow+Math.round(p.h*2); seen[k]=(seen[k]||0)+1; p._j=(seen[k]-1)*9;});
+    const dots=svg.append('g').selectAll('circle').data(pts).join('circle').attr('cx',d=>x(d.h)).attr('cy',d=>y(d.dow)+y.bandwidth()/2+(d.g==='socap'?-5:5)+d._j).attr('r',6.5).attr('fill',d=>d.g==='socap'?'var(--blue)':'var(--gray)').attr('opacity',.85).style('cursor','default');
+    bindTip(dots, d=>`<b>${esc(d.label)}</b>${d.sub}`);
+  })();
 
-  // ledger
+  // ---- 3. greentext ----
+  (function(){
+    const l=L.find(x=>x.slug==='cartesia'); const p=l&&l.wave.find(p=>p.greentext); if(!p) return;
+    document.getElementById('green').innerHTML=postCard(p,{maxLines:12, when:Math.round(p.lag_h*60)+' minutes after the hero post'});
+  })();
+
+  // ---- 4. roster + twins ----
+  (function(){
+    const m=document.getElementById('matrix'); m.style.gridTemplateColumns=`minmax(150px,1fr) repeat(${L.length},28px)`; m.style.minWidth=(150+L.length*32)+'px';
+    m.insertAdjacentHTML('beforeend','<div></div>'+L.map(l=>`<div class="h">${esc(l.client)}</div>`).join(''));
+    roster.forEach(r=>{
+      m.insertAdjacentHTML('beforeend',`<div class="a"><a href="https://x.com/${esc(r.author)}" target="_blank" rel="noopener">@${esc(r.author)}</a><small>${fmt(r.followers)}</small></div>`+L.map(l=>{const posts=l.wave.filter(p=>p.author===r.author); const cls=posts.length?(posts.some(p=>p.greentext)?'lore':'on'):''; const title=posts.map(p=>`${p.lag_h} hours after the hero, ${fmt(p.views)} views`).join('; '); return `<div class="c ${cls}" title="${esc(title)}"></div>`;}).join(''));
+    });
+    const c=L.find(l=>l.slug==='cartesia'); if(!c) return;
+    const tw=c.wave.filter(p=>/acquire Cartesia/i.test(p.text||'')).sort((a,b)=>a.lag_h-b.lag_h);
+    document.getElementById('twins').innerHTML = tw.map(p=>postCard(p,{when:'day '+(Math.floor(p.lag_h/24)+1)+' of the launch'})).join('');
+  })();
+
+  // ---- 5. wave, beeswarm per row ----
+  (function(){
+    const svg=d3.select('#wave-chart'); const W=1040,H=640, ml=110, mr=24, mt=30, mb=30; const maxH=168;
+    const x=d3.scaleLinear().domain([0,maxH]).range([ml,W-mr]); const y=d3.scaleBand().domain(L.map(l=>l.client)).range([mt,H-mb]);
+    const r=d3.scaleSqrt().domain([0,1.4e6]).range([2.5,13]);
+    svg.append('rect').attr('x',x(96)).attr('y',mt).attr('width',x(120)-x(96)).attr('height',H-mt-mb).attr('fill','var(--amber)').attr('fill-opacity',.06).attr('rx',6);
+    const g=svg.append('g').attr('class','grid');
+    for(let d=0;d<=7;d++){ g.append('line').attr('x1',x(d*24)).attr('x2',x(d*24)).attr('y1',mt).attr('y2',H-mb); svg.append('text').attr('x',x(d*24)).attr('y',mt-12).attr('text-anchor',d===0?'start':d===7?'end':'middle').attr('class','faint').text(d===0?'hero post':d===7?'one week':'day '+(d+1)); }
+    svg.append('text').attr('x',x(108)).attr('y',H-mb+18).attr('text-anchor','middle').attr('class','faint m-hide').text('day five');
+    L.forEach(l=>{ const cy=y(l.client)+y.bandwidth()/2; svg.append('line').attr('x1',ml).attr('x2',W-mr).attr('y1',cy).attr('y2',cy).attr('stroke','var(--rule)'); svg.append('text').attr('x',ml-14).attr('y',cy+4).attr('text-anchor','end').attr('class','lab').text(l.client);
+      const hero=svg.append('rect').attr('x',x(0)-1.5).attr('y',cy-16).attr('width',3).attr('height',32).attr('rx',1.5).attr('fill','var(--ink)');
+      bindTip(hero, ()=>`<b>Hero post, @${esc(l.hero.author)}</b>${fmt(l.hero.views)} views, ${fmt(l.hero.likes)} likes<div class="q">${esc(l.hero.text.slice(0,200))}</div>`);
+    });
+    const pts=[];
+    L.forEach(l=>{ const items=l.wave.filter(p=>p.lag_h>=0&&p.lag_h<=maxH&&p.author.toLowerCase()!==l.hero.author.toLowerCase()).map(p=>({...p,client:l.client}));
+      dodge(items, d=>x(d.lag_h), d=>r(d.views||0), 1.2).forEach(([d,dy])=>pts.push({...d, cx:x(d.lag_h), cy:y(l.client)+y.bandwidth()/2+Math.max(-24,Math.min(24,dy))})); });
+    const dots=svg.append('g').selectAll('circle').data(pts).join('circle').attr('cx',d=>d.cx).attr('cy',d=>d.cy).attr('r',d=>reduced?r(d.views||0):0)
+      .attr('fill',d=>d.greentext?'var(--amber)':d.kind==='reply'?'var(--gray)':'var(--blue)').attr('opacity',d=>d.greentext?.95:.7).style('cursor','pointer').on('click',(e,d)=>window.open(d.url,'_blank'));
+    bindTip(dots, d=>`<b>@${esc(d.author)}, ${d.lag_h} hours after the hero</b>${fmt(d.views)} views, ${fmt(d.likes)} likes, ${fmt(d.followers)} followers<div class="q">${esc((d.text||'').slice(0,240))}</div>`);
+    if(!reduced) whenVisible(svg.node(), ()=>dots.transition().delay(d=>d.lag_h/maxH*1400).duration(450).ease(d3.easeBackOut.overshoot(1.2)).attr('r',d=>r(d.views||0)));
+  })();
+
+  // ---- 6. reach ----
+  (function(){
+    const svg=d3.select('#reach-chart'); const W=1040,H=500, ml=150, mr=70, mt=16, mb=44;
+    const items=[...L.map(l=>({label:l.client,x:l.derived.views_per_follower,g:'socap',sub:`@${l.hero.author}, ${fmt(l.hero.followers)} followers, ${fmt(l.hero.views)} views`})),
+                 ...B.map(b=>({label:b.label,x:b.derived.views_per_follower,g:'base',sub:`@${b.hero.author}, ${fmt(b.hero.followers)} followers, ${fmt(b.hero.views)} views`}))].sort((a,b)=>b.x-a.x);
+    const x=d3.scaleLog().domain([1,2000]).range([ml,W-mr]);
+    const y=d3.scalePoint().domain(items.map(d=>d.label)).range([mt+12,H-mb-12]);
+    const g=svg.append('g').attr('class','grid'); [1,10,100,1000].forEach(v=>{ g.append('line').attr('x1',x(v)).attr('x2',x(v)).attr('y1',mt).attr('y2',H-mb); svg.append('text').attr('x',x(v)).attr('y',H-mb+20).attr('text-anchor','middle').attr('class','faint').text(v+'x'); });
+    svg.append('text').attr('x',W-mr).attr('y',H-6).attr('text-anchor','end').attr('class','faint').text('views per follower');
+    const row=svg.append('g').selectAll('g').data(items).join('g');
+    row.append('text').attr('x',ml-12).attr('y',d=>y(d.label)+4).attr('text-anchor','end').attr('class','lab').text(d=>d.label);
+    const stems=row.append('line').attr('x1',x(1)).attr('x2',x(1)).attr('y1',d=>y(d.label)).attr('y2',d=>y(d.label)).attr('stroke',d=>d.g==='socap'?'var(--blue)':'var(--gray)').attr('stroke-width',2).attr('stroke-opacity',.35);
+    const dots=row.append('circle').attr('cx',x(1)).attr('cy',d=>y(d.label)).attr('r',6.5).attr('fill',d=>d.g==='socap'?'var(--blue)':'var(--gray)').attr('opacity',.9);
+    const vals=row.append('text').attr('x',d=>x(d.x)+12).attr('y',d=>y(d.label)+4).attr('class','faint').text(d=>Math.round(d.x)+'x').attr('opacity',0);
+    const hits=row.append('rect').attr('x',ml).attr('y',d=>y(d.label)-y.step()/2).attr('width',W-ml-mr).attr('height',y.step()).attr('fill','transparent');
+    bindTip(hits, d=>`<b>${esc(d.label)}</b>${esc(d.sub)}<br>${Math.round(d.x)} views per follower`);
+    whenVisible(svg.node(), ()=>{ const t=d3.transition().duration(reduced?0:900).ease(d3.easeCubicOut); stems.transition(t).attr('x2',d=>x(d.x)); dots.transition(t).attr('cx',d=>x(d.x)); vals.transition(t).attr('opacity',1); });
+  })();
+
+  // ---- tables ----
   const cols=[
     {k:'client',h:'Client',cls:'title',f:l=>`<a href="${l.case_study}" target="_blank" rel="noopener">${l.client}</a>`},
     {k:'date',h:'Hero post',f:l=>`<span style="white-space:nowrap">${l.hero.created_at.slice(0,10)}</span><span class="quiet"> ${l.hero.dow} ${l.hero.created_at.slice(11,16)} UTC</span>`,v:l=>l.hero.created_at},
     {k:'author',h:'Account',f:l=>`<a href="${l.hero.url}" target="_blank" rel="noopener">@${l.hero.author}</a> <span class="tag ${l.hero_role==='founder'?'':'gray'}">${l.hero_role}</span>`},
     {k:'followers',h:'Followers',num:1,f:l=>fmt(l.hero.followers),v:l=>l.hero.followers},
     {k:'views',h:'Views',num:1,f:l=>fmt(l.hero.views),v:l=>l.hero.views},
-    {k:'vpf',h:'Views per follower',num:1,f:l=>l.derived.views_per_follower.toFixed(0)+'x',v:l=>l.derived.views_per_follower},
+    {k:'vpf',h:'Views per follower',num:1,f:l=>Math.round(l.derived.views_per_follower)+'x',v:l=>l.derived.views_per_follower},
     {k:'likes',h:'Likes',num:1,f:l=>fmt(l.hero.likes),v:l=>l.hero.likes},
     {k:'replies',h:'Replies',num:1,f:l=>fmt(l.hero.replies),v:l=>l.hero.replies},
     {k:'rr',h:'Replies per like',num:1,f:l=>pct(l.derived.reply_rate),v:l=>l.derived.reply_rate},
@@ -355,106 +432,6 @@ fetch('data.json').then(r=>r.json()).then(D=>{
     document.querySelectorAll('#ledger-table th').forEach(th=>th.onclick=()=>{const k=th.dataset.sort; if(sortK===k) sortD*=-1; else {sortK=k; sortD=-1;} renderLedger();});
   }
   renderLedger();
-
-  // ---- hero wave (Wispr) ----
-  (function(){
-    const l = L.find(x=>x.slug==='wispr-flow'); if(!l) return;
-    const svg=d3.select('#hero-chart'); const W=1040,H=250, ml=16, mr=16, mt=28, mb=34;
-    const x=d3.scaleLinear().domain([0,168]).range([ml,W-mr]);
-    const r=d3.scaleSqrt().domain([0,1.4e6]).range([2,15]);
-    const pts=l.wave.filter(p=>p.lag_h>=0&&p.lag_h<=168&&p.author.toLowerCase()!==l.hero.author.toLowerCase()).sort((a,b)=>a.lag_h-b.lag_h);
-    const g=svg.append('g').attr('class','grid');
-    for(let d=0;d<=7;d++){ g.append('line').attr('x1',x(d*24)).attr('x2',x(d*24)).attr('y1',mt).attr('y2',H-mb); svg.append('text').attr('x',x(d*24)+ (d===7?-4:4)).attr('y',mt-10).attr('text-anchor',d===7?'end':'start').attr('class','faint').text(d===0?'hero post':d===7?'day 8':'day '+(d+1)); }
-    const y0=(mt+H-mb)/2;
-    svg.append('line').attr('x1',ml).attr('x2',W-mr).attr('y1',y0).attr('y2',y0).attr('stroke','var(--rule-2)');
-    svg.append('rect').attr('x',x(0)-4).attr('y',y0-16).attr('width',8).attr('height',32).attr('rx',2).attr('fill','var(--ink)');
-    const bucket={}; pts.forEach(p=>{const b=Math.floor(p.lag_h/6); bucket[b]=(bucket[b]||0)+1; p._j=bucket[b];});
-    const dots=svg.append('g').selectAll('circle').data(pts).join('circle')
-      .attr('cx',d=>x(d.lag_h)).attr('cy',d=>y0+((d._j%2?-1:1)*Math.min(3,Math.ceil(d._j/2))*14))
-      .attr('r',d=>reduced?r(d.views||0):0).attr('fill',d=>d.greentext?'var(--amber)':d.kind==='reply'?'var(--gray)':'var(--blue)').attr('fill-opacity',.85).attr('stroke','#fff').attr('stroke-width',1.5).style('cursor','pointer')
-      .on('click',(e,d)=>window.open(d.url,'_blank'));
-    bindTip(dots, d=>`<b>@${esc(d.author)}, ${d.lag_h} hours after the hero</b>${fmt(d.views)} views, ${fmt(d.likes)} likes, ${fmt(d.followers)} followers<div class="q">${esc((d.text||'').slice(0,240))}</div>`);
-    const lab=(t,h)=>svg.append('text').attr('x',x(h)).attr('y',H-mb+22).attr('text-anchor','middle').attr('class','faint m-hide').text(t);
-    lab('founder-lore burst',22); lab('day-five burst: eight posts in three hours',97);
-    const status=document.getElementById('hero-status');
-    if(reduced) return;
-    whenVisible(svg.node(), ()=>{
-      dots.transition().delay(d=>200+d.lag_h/168*3200).duration(500).ease(d3.easeBackOut.overshoot(1.4)).attr('r',d=>r(d.views||0));
-      let t0=null; const tick=ts=>{ if(!t0)t0=ts; const h=Math.min(168,((ts-t0)/3200)*168); status.textContent='+'+Math.round(h)+' hours'; if(h<168) requestAnimationFrame(tick); else status.textContent='7 days'; }; setTimeout(()=>requestAnimationFrame(tick),200);
-    });
-  })();
-
-  // ---- reach chart ----
-  (function(){
-    const svg=d3.select('#reach-chart'); const W=1040,H=500, ml=150, mr=60, mt=16, mb=44;
-    const items=[...L.map(l=>({label:l.client,x:l.derived.views_per_follower,g:'socap',sub:`@${l.hero.author}, ${fmt(l.hero.followers)} followers, ${fmt(l.hero.views)} views`})),
-                 ...B.map(b=>({label:b.label,x:b.derived.views_per_follower,g:'base',sub:`@${b.hero.author}, ${fmt(b.hero.followers)} followers, ${fmt(b.hero.views)} views`}))].sort((a,b)=>b.x-a.x);
-    const x=d3.scaleLog().domain([1,2000]).range([ml,W-mr]);
-    const y=d3.scalePoint().domain(items.map(d=>d.label)).range([mt+12,H-mb-12]);
-    const g=svg.append('g').attr('class','grid'); [1,10,100,1000].forEach(v=>{ g.append('line').attr('x1',x(v)).attr('x2',x(v)).attr('y1',mt).attr('y2',H-mb); svg.append('text').attr('x',x(v)).attr('y',H-mb+20).attr('text-anchor','middle').text(v+'x'); });
-    svg.append('text').attr('x',W-mr).attr('y',H-6).attr('text-anchor','end').attr('class','faint').text('views per follower');
-    const row=svg.append('g').selectAll('g').data(items).join('g');
-    row.append('text').attr('x',ml-12).attr('y',d=>y(d.label)+4).attr('text-anchor','end').attr('class','lab').text(d=>d.label);
-    const stems=row.append('line').attr('x1',x(1)).attr('x2',x(1)).attr('y1',d=>y(d.label)).attr('y2',d=>y(d.label)).attr('stroke',d=>d.g==='socap'?'var(--blue)':'var(--gray)').attr('stroke-width',2).attr('stroke-opacity',.45);
-    const dots=row.append('circle').attr('cx',x(1)).attr('cy',d=>y(d.label)).attr('r',6.5).attr('fill',d=>d.g==='socap'?'var(--blue)':'var(--gray)').attr('stroke','#fff').attr('stroke-width',2);
-    const vals=row.append('text').attr('x',d=>x(d.x)+12).attr('y',d=>y(d.label)+4).attr('class','faint').text(d=>d.x.toFixed(0)+'x').attr('opacity',0);
-    const hits=row.append('rect').attr('x',ml).attr('y',d=>y(d.label)-y.step()/2).attr('width',W-ml-mr).attr('height',y.step()).attr('fill','transparent');
-    bindTip(hits, d=>`<b>${esc(d.label)}</b>${esc(d.sub)}<br>${d.x.toFixed(0)} views per follower`);
-    const draw=()=>{ const t=d3.transition().duration(reduced?0:900).ease(d3.easeCubicOut); stems.transition(t).attr('x2',d=>x(d.x)); dots.transition(t).attr('cx',d=>x(d.x)); vals.transition(t).attr('opacity',1); };
-    whenVisible(svg.node(), draw);
-  })();
-
-  // ---- clock ----
-  (function(){
-    const svg=d3.select('#clock-chart'); const W=1040,H=330, ml=54, mr=16, mt=30, mb=54;
-    const x=d3.scaleLinear().domain([0,24]).range([ml,W-mr]); const y=d3.scaleBand().domain(dayNames).range([mt,H-mb]);
-    const g=svg.append('g').attr('class','grid');
-    for(let h=0;h<=24;h+=3){ g.append('line').attr('x1',x(h)).attr('x2',x(h)).attr('y1',mt).attr('y2',H-mb); svg.append('text').attr('x',x(h)).attr('y',mt-10).attr('text-anchor',h===24?'end':h===0?'start':'middle').text(String(h).padStart(2,'0')+':00'); }
-    dayNames.forEach((d,i)=>{ g.append('line').attr('x1',ml).attr('x2',W-mr).attr('y1',y(d)+y.bandwidth()).attr('y2',y(d)+y.bandwidth()); svg.append('text').attr('x',ml-10).attr('y',y(d)+y.bandwidth()/2+4).attr('text-anchor','end').attr('class','lab').text(d); });
-    svg.append('rect').attr('x',x(13)).attr('y',mt).attr('width',x(18)-x(13)).attr('height',H-mt-mb).attr('fill','var(--blue)').attr('fill-opacity',.06);
-    svg.append('text').attr('x',x(13)).attr('y',H-mb+20).attr('class','faint').text('13:00 UTC, 9am New York, 6:30pm India');
-    svg.append('text').attr('x',x(18)).attr('y',H-mb+38).attr('class','faint').text('18:00 UTC, 2pm New York, 11:30pm India');
-    const pts=[...L.map(l=>({label:l.client,dow:l.hero.dow,h:l.hero.utc_hour,g:'socap',sub:l.hero.created_at.slice(0,16).replace('T',' ')+' UTC'})),...B.map(b=>({label:b.label,dow:b.hero.dow,h:b.hero.utc_hour,g:'base',sub:b.hero.created_at.slice(0,16).replace('T',' ')+' UTC'}))];
-    const seen={}; pts.forEach(p=>{const k=p.dow+Math.round(p.h*2); seen[k]=(seen[k]||0)+1; p._j=(seen[k]-1)*8;});
-    const dots=svg.append('g').selectAll('circle').data(pts).join('circle').attr('cx',d=>x(d.h)).attr('cy',d=>y(d.dow)+y.bandwidth()/2+(d.g==='socap'?-6:6)+d._j).attr('r',7).attr('fill',d=>d.g==='socap'?'var(--blue)':'var(--gray)').attr('stroke','#fff').attr('stroke-width',2);
-    bindTip(dots, d=>`<b>${esc(d.label)}</b>${d.sub}`);
-  })();
-
-  // ---- wave chart ----
-  (function(){
-    const svg=d3.select('#wave-chart'); const W=1040,H=620, ml=110, mr=20, mt=30, mb=40; const maxH=170;
-    const x=d3.scaleLinear().domain([0,maxH]).range([ml,W-mr]); const y=d3.scaleBand().domain(L.map(l=>l.client)).range([mt,H-mb]);
-    const r=d3.scaleSqrt().domain([0,1.4e6]).range([2.5,15]);
-    const g=svg.append('g').attr('class','grid');
-    for(let d=0;d<=7;d++){ g.append('line').attr('x1',x(d*24)).attr('x2',x(d*24)).attr('y1',mt).attr('y2',H-mb); svg.append('text').attr('x',x(d*24)).attr('y',mt-10).attr('text-anchor',d===0?'start':d===7?'end':'middle').attr('class','faint').text(d===0?'hero':'day '+(d+1)); }
-    L.forEach(l=>{ const cy=y(l.client)+y.bandwidth()/2; svg.append('line').attr('x1',ml).attr('x2',W-mr).attr('y1',cy).attr('y2',cy).attr('stroke','var(--rule)'); svg.append('text').attr('x',ml-12).attr('y',cy+4).attr('text-anchor','end').attr('class','lab').text(l.client);
-      const hero=svg.append('rect').attr('x',x(0)-4).attr('y',cy-10).attr('width',8).attr('height',20).attr('rx',2).attr('fill','var(--ink)');
-      bindTip(hero, ()=>`<b>Hero post, @${esc(l.hero.author)}</b>${fmt(l.hero.views)} views, ${fmt(l.hero.likes)} likes<div class="q">${esc(l.hero.text.slice(0,220))}</div>`);
-    });
-    const pts=L.flatMap(l=>l.wave.filter(p=>p.lag_h>=0&&p.author.toLowerCase()!==l.hero.author.toLowerCase()).map(p=>({...p,client:l.client}))).sort((a,b)=>(b.views||0)-(a.views||0));
-    const dots=svg.append('g').selectAll('circle').data(pts).join('circle').attr('cx',d=>x(Math.min(maxH,d.lag_h))).attr('cy',d=>y(d.client)+y.bandwidth()/2).attr('r',d=>reduced?r(d.views||0):0)
-      .attr('fill',d=>d.greentext?'var(--amber)':d.kind==='reply'?'var(--gray)':'var(--blue)').attr('fill-opacity',.82).attr('stroke','#fff').attr('stroke-width',1.5).style('cursor','pointer').on('click',(e,d)=>window.open(d.url,'_blank'));
-    bindTip(dots, d=>`<b>@${esc(d.author)}, ${d.lag_h} hours after the hero</b>${fmt(d.views)} views, ${fmt(d.likes)} likes, ${fmt(d.followers)} followers<div class="q">${esc((d.text||'').slice(0,240))}</div>`);
-    if(!reduced) whenVisible(svg.node(), ()=>dots.transition().delay(d=>d.lag_h/maxH*900).duration(400).ease(d3.easeCubicOut).attr('r',d=>r(d.views||0)));
-  })();
-
-  // ---- roster matrix ----
-  (function(){
-    const m=document.getElementById('matrix'); m.style.gridTemplateColumns=`minmax(150px,1fr) repeat(${L.length},minmax(22px,28px))`; m.style.minWidth=(150+L.length*25)+'px';
-    m.insertAdjacentHTML('beforeend','<div></div>'+L.map(l=>`<div class="h">${esc(l.client)}</div>`).join(''));
-    roster.forEach(r=>{
-      m.insertAdjacentHTML('beforeend',`<div class="a"><a href="https://x.com/${esc(r.author)}" target="_blank" rel="noopener">@${esc(r.author)}</a><small>${fmt(r.followers)}</small></div>`+L.map(l=>{const posts=l.wave.filter(p=>p.author===r.author); const cls=posts.length?(posts.some(p=>p.greentext)?'lore':'on'):''; const title=posts.map(p=>`+${p.lag_h}h, ${fmt(p.views)} views`).join('; '); return `<div class="c ${cls}" title="${esc(title)}"></div>`;}).join(''));
-    });
-  })();
-
-  // ---- twins ----
-  (function(){
-    const c=L.find(l=>l.slug==='cartesia'); if(!c) return;
-    const tw=c.wave.filter(p=>/acquire Cartesia/i.test(p.text||'')).sort((a,b)=>a.lag_h-b.lag_h);
-    document.getElementById('twins').innerHTML = tw.map(p=>`<div class="twin"><div class="who"><a href="${p.url}" target="_blank" rel="noopener">@${esc(p.author)}</a>, ${p.lag_h} hours after the hero, ${fmt(p.views)} views</div><blockquote>${esc((p.text||'').slice(0,260))}</blockquote></div>`).join('');
-  })();
-
-  // ---- posts table ----
   (function(){
     const all=L.flatMap(l=>l.wave.map(p=>({...p,client:l.client,slug:l.slug}))).sort((a,b)=>a.slug.localeCompare(b.slug)||a.lag_h-b.lag_h);
     const sel=document.getElementById('f-launch'); L.forEach(l=>sel.append(new Option(l.client,l.slug)));
@@ -462,17 +439,11 @@ fetch('data.json').then(r=>r.json()).then(D=>{
     function render(){
       const s=sel.value, k=kind.value, t=q.value.toLowerCase();
       const rows=all.filter(p=>(!s||p.slug===s)&&(!k||p.kind===k)&&(!t||(p.text||'').toLowerCase().includes(t)||p.author.toLowerCase().includes(t)));
-      document.getElementById('f-count').textContent=rows.length+' posts';
+      document.getElementById('f-count').textContent=rows.length+' of '+all.length+' posts';
       document.getElementById('posts-table').innerHTML=`<thead><tr><th>Launch</th><th class="num">Hours after hero</th><th>Account</th><th class="num">Followers</th><th class="num">Views</th><th class="num">Likes</th><th>Kind</th><th>Text</th></tr></thead><tbody>${rows.map(p=>`<tr><td>${esc(p.client)}</td><td class="num">${p.lag_h>0?'+':''}${p.lag_h}</td><td><a href="${p.url}" target="_blank" rel="noopener">@${esc(p.author)}</a></td><td class="num">${fmt(p.followers)}</td><td class="num">${fmt(p.views)}</td><td class="num">${fmt(p.likes)}</td><td>${p.greentext?'<span class="tag amber">biography</span>':p.kind==='reply'?'<span class="tag gray">reply</span>':'<span class="tag">post</span>'}</td><td class="txt">${esc((p.text||'').slice(0,220))}</td></tr>`).join('')}</tbody>`;
     }
     [sel,kind].forEach(x=>x.onchange=render); q.oninput=render; render();
   })();
-
-  // nav highlight
-  const links=[...document.querySelectorAll('nav.top li a')];
-  const secs=links.map(a=>document.querySelector(a.getAttribute('href')));
-  const io=new IntersectionObserver(es=>{ es.forEach(e=>{ if(e.isIntersecting){ links.forEach(a=>a.classList.toggle('on', a.getAttribute('href')==='#'+e.target.id)); } }); },{rootMargin:'-40% 0px -55% 0px'});
-  secs.forEach(s=>s&&io.observe(s));
 });
 </script>
 </body>

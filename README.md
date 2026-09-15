@@ -1,6 +1,6 @@
-# Launch Ledger
+# Anatomy of a viral launch
 
-Every launch Social Capital Inc lists publicly, its hero post, and the creator wave around it, pulled from public X data. Built as item 3 of the Social Capital technical generalist application.
+Every launch Social Capital Inc lists publicly, its hero post, and the creator wave around it, rebuilt from public X data and written up as a short read. Built as item 3 of the Social Capital technical generalist application.
 
 Live: https://yashbudhia.github.io/socap-lens/
 

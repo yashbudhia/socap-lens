@@ -4,7 +4,7 @@ const rd = f => JSON.parse(fs.readFileSync(f, 'utf8'));
 const L = rd('data/launches.json'), B = rd('data/baseline.json');
 const DOW = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 const pick = t => ({
-  id: t.id, url: t.url, author: t.author.screen_name, author_name: t.author.name, followers: t.author.followers,
+  id: t.id, url: t.url, author: t.author.screen_name, author_name: t.author.name, avatar_url: t.author.avatar_url, followers: t.author.followers,
   created_at: new Date(t.created_timestamp * 1000).toISOString(), dow: DOW[new Date(t.created_timestamp*1000).getUTCDay()],
   utc_hour: +(new Date(t.created_timestamp*1000).getUTCHours() + new Date(t.created_timestamp*1000).getUTCMinutes()/60).toFixed(2),
   views: t.views, likes: t.likes, replies: t.replies, retweets: t.retweets, quotes: t.quotes, bookmarks: t.bookmarks,
@@ -15,9 +15,9 @@ const isGreen = s => /(^|\n)\s*>\s*be\b/i.test(s || '');
 const launches = L.map(l => {
   const hero = pick(rd(`data/hero_${l.hero_id}.json`).tweet);
   const wave = Object.values(rd(`data/wave_${l.slug}.posts.json`)).filter(p => !p.error && p.id !== l.hero_id).map(p => ({
-    id: p.id, url: p.url, author: p.author, author_name: p.author_name, followers: p.followers, created_at: p.created_at,
+    id: p.id, url: p.url, author: p.author, author_name: p.author_name, avatar_url: p.avatar_url || null, followers: p.followers, created_at: p.created_at,
     lag_h: +((new Date(p.created_at) - new Date(hero.created_at)) / 3.6e6).toFixed(1),
-    views: p.views, likes: p.likes, replies: p.replies, retweets: p.retweets, text: p.text, greentext: isGreen(p.text),
+    views: p.views, likes: p.likes, replies: p.replies, retweets: p.retweets, quotes: p.quotes, bookmarks: p.bookmarks, text: p.text, greentext: isGreen(p.text),
     kind: isGreen(p.text) ? 'lore' : /^@/.test(p.text || '') ? 'reply' : 'post',
   })).sort((a, b) => a.lag_h - b.lag_h);
   return { ...l, hero, wave, derived: {
