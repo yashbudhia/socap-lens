@@ -284,7 +284,7 @@ fetch('data.json').then(r=>r.json()).then(D=>{
     const g=el('g',{class:'grid'});
     for(let d=0;d<=7;d++){ g.append(el('line',{x1:sx(d*24),x2:sx(d*24),y1:mt,y2:H-mb})); svg.append(el('text',{x:sx(d*24),y:mt-10,'text-anchor':'middle'},d===0?'hero':'day '+(d+1))); }
     svg.append(g);
-    svg.append(el('text',{x:W-mr,y:H-10,'text-anchor':'end',class:'muted'},'hours after the hero post; the hero account's own thread and pre-launch posts are left out here but kept in the table below'));
+    svg.append(el('text',{x:W-mr,y:H-10,'text-anchor':'end',class:'muted'},'hours after the hero post; the hero account thread and pre-launch posts are left out here but kept in the table below'));
     L.forEach((l,i)=>{
       const y=mt+rowH*(i+.5);
       svg.append(el('line',{x1:ml,x2:W-mr,y1:y,y2:y,stroke:'var(--line)'}));
