@@ -9,9 +9,9 @@ Live: https://yashbudhia.github.io/socap-lens/
 Social Capital does not amplify the product. It amplifies the founder's life story, on a schedule, through a small recurring roster.
 
 - Hero posts sit on the founder's personal handle in 7 of 9 launches, and 8 of 9 go out on a Monday or Tuesday between 13:00 and 18:00 UTC.
-- The highest-reach wave posts are greentext founder biographies ("be Karan Goel, spawn in Delhi"), not product reviews. Median views on a lore post are about 4x the median for every other wave post.
-- One account, @kritarthmittal, appears in 7 of 9 launch waves and wrote the greentext in 5 of them. Seven other accounts appear in two or more.
-- The wave is bimodal: a burst in the first 24 hours, quiet on days three and four, then a second product-angle burst on day five. In the Wispr Flow wave, eight posts landed between +95.8h and +98.5h.
+- The highest-reach wave posts are greentext founder biographies ("be Karan Goel, spawn in Delhi"), not product reviews. In four of the five launches where the biography followed the hero post it was the most-viewed post in the wave, and median views on a biography are about 4x the median for every other wave post.
+- One account, @kritarthmittal, appears in 7 of 9 launch waves and wrote the greentext in 5 of them. Six other creator accounts appear in two or more.
+- In the one launch with enough public posts to see the whole week, Wispr Flow, the wave is bimodal: a burst in the first 24 hours, quiet on days three and four, then a second product-angle burst on day five with eight posts between +95.8h and +98.5h. The other launches are too thinly sampled to say whether this is the rule.
 - Reach does not depend on the founder's follower count. Median views per follower on the hero post is 236x, against 10x for nine comparable launches with no agency.
 
 ## What is in here

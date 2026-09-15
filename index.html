@@ -7,6 +7,7 @@
 <meta name="description" content="Social Capital promises millions of views on any product launch. Nine launches, rebuilt from public X data, show how they do it.">
 <meta property="og:title" content="Anatomy of a viral launch">
 <meta property="og:description" content="Nine Social Capital launches, rebuilt from public data. They launch the founder, not the product.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%2714%27 fill=%27%232450D9%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%275%27 fill=%27%23fff%27/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -175,21 +176,21 @@ footer a{color:var(--ink-2)}
 
 <header class="hero col">
   <h1>Anatomy of a viral launch</h1>
-  <p class="dek"><b>Social Capital</b> promises five million views on any product launch. I pulled every launch they list publicly to see how they actually do it. Nine launches, 97 posts, one pattern.</p>
+  <p class="dek"><b>Social Capital</b> <a href="https://www.linkedin.com/posts/vedikabhaia_ive-been-building-social-capital-inc-quietly-activity-7380928680258093056-zKNu" target="_blank" rel="noopener">promises five million views</a> on any product launch. I pulled every launch they list publicly to see how they actually do it. Nine launches, 97 posts, one pattern.</p>
 </header>
 
 <section class="ch col" id="c1">
   <p class="k">First</p>
   <h2>The post goes out from the founder, not the company.</h2>
-  <p class="big">Seven of the nine launches open with a post on the founder's personal account. Not the brand handle, not a press release. A person, a video, and usually a funding number.</p>
-  <p class="note">Hover a row for the post.</p>
+  <p class="big">Seven of the nine launches open with a post on the founder's personal account. Not the brand handle, not a press release. A person, usually a two to three minute video, and usually a funding number.</p>
+  <p class="note">Tap or hover a row to see the post.</p>
   <figure class="card"><div class="bars" id="hero-list"></div><figcaption>Bar length is views on the hero post. Blue means the founder posted it, gray means the company account did.</figcaption></figure>
 </section>
 
 <section class="ch col" id="c2">
   <p class="k">Second</p>
   <h2>It goes out on a Monday, before lunch in New York.</h2>
-  <p class="big">Eight of nine hero posts land on a Monday or Tuesday. All nine go live between 13:00 and 18:00 UTC. That is mid-morning on the US east coast and evening in India, and it leaves the rest of the week for what comes next.</p>
+  <p class="big">Eight of nine hero posts land on a Monday or Tuesday. All nine go live between 13:00 and 18:00 UTC. That is 8am to 2pm in New York depending on the season, and evening in India. It leaves the rest of the week for what comes next.</p>
   <figure class="card">
     <div class="legend"><span><i style="--c:var(--blue)"></i>Social Capital launch</span><span><i style="--c:var(--gray)"></i>Launches with no agency</span></div>
     <svg id="clock-chart" class="chart" viewBox="0 0 640 320" role="img" aria-label="Day of week and hour of each hero post"></svg>
@@ -200,24 +201,24 @@ footer a{color:var(--ink-2)}
 <section class="ch col" id="c3">
   <p class="k">Third</p>
   <h2>Then someone tells the founder's life story.</h2>
-  <p class="big">Within a day, a post appears that says nothing about the product. It is the founder's biography, written as greentext, and it usually beats every product post in the wave.</p>
+  <p class="big">Soon after, a post appears that says nothing about the product. It is the founder's biography, written as greentext. In four of the five launches where it followed the hero post, it was the most-viewed post in the wave.</p>
   <div class="pair"><div><div class="n" id="n-lore"></div><div class="l">median views on a founder biography</div></div><div class="g"><div class="n" id="n-other"></div><div class="l">median views on every other post in the wave</div></div></div>
-  <figure><div id="green"></div><figcaption>Posted under an hour after the Cartesia hero post. Biographies like this appear in six of the nine launches.</figcaption></figure>
+  <figure><div id="green"></div><figcaption>Biographies like this exist for six of the nine launches. Five landed within 20 hours of the hero post. The Poly AI one was posted two months before its hero post, during an earlier push.</figcaption></figure>
 </section>
 
 <section class="ch col" id="c4">
   <p class="k">Fourth</p>
   <h2>The same people show up every time.</h2>
-  <p class="big">Eight accounts appear in more than one launch. One of them, <a href="https://x.com/kritarthmittal" target="_blank" rel="noopener">@kritarthmittal</a>, appears in seven of nine and wrote the biography in five. Amber marks the launches where an account wrote the greentext.</p>
-  <figure class="card scrollx"><div class="matrix" id="matrix"></div></figure>
+  <p class="big" id="roster-copy"></p>
+  <figure class="card scrollx"><div class="matrix" id="matrix"></div><figcaption>Amber marks the launch where the account wrote the greentext biography. Investor accounts such as a16z are left out. The Poly AI cell for @kritarthmittal is the biography posted two months before that hero post.</figcaption></figure>
   <div class="twins" id="twins"></div>
-  <p class="note" style="margin-top:12px">Two accounts, one brief. From the Cartesia launch, 46 hours apart.</p>
+  <p class="note" style="margin-top:12px">Two accounts, near-identical copy. From the Cartesia launch, 46 hours apart.</p>
 </section>
 
 <section class="ch col" id="c5">
   <p class="k">Fifth</p>
-  <h2>And the wave comes back on day five.</h2>
-  <p class="big">A launch is not a day. After the first burst the timeline goes quiet, then on day five a second set of posts lands almost together. In the Wispr Flow launch, eight accounts posted inside three hours, four days after the founder.</p>
+  <h2>And, at least once, the wave came back on day five.</h2>
+  <p class="big">Wispr Flow is the one launch with enough public posts to see the whole week. After the first burst the timeline goes quiet, then on day five a second set of posts lands almost together: eight accounts inside three hours, four days after the founder. The other rows are too thin to say whether this is the rule.</p>
 </section>
 <div class="wide">
   <figure class="card">
@@ -230,7 +231,7 @@ footer a{color:var(--ink-2)}
 <section class="ch col" id="c6">
   <p class="k">The result</p>
   <h2>Reach that has nothing to do with follower count.</h2>
-  <p class="big">Divide a hero post's views by its author's followers. A launch on its own usually gets 5 to 50 views per follower. Social Capital launches from accounts with under 40,000 followers get 100 to 400. That gap is the network.</p>
+  <p class="big">Divide a hero post's views by its author's followers. Seven of the nine comparison launches got 4 to 18 views per follower; Cluely got 52 and the original Devin launch 173. Eight of the nine Social Capital launches got 96 to 1,412, and the one that did not, Deel, ran from an account with 427,000 followers. The gap is the network.</p>
   <div class="pair"><div><div class="n" id="n-vpf"></div><div class="l">median views per follower, Social Capital launches</div></div><div class="g"><div class="n" id="n-vpf-b"></div><div class="l">median views per follower, launches with no agency</div></div></div>
 </section>
 <div class="wide">
@@ -244,7 +245,7 @@ footer a{color:var(--ink-2)}
 <section class="ch col" id="c7">
   <p class="k">So</p>
   <h2>They launch the founder, not the product.</h2>
-  <p class="big">A founder's account, an early-week slot, a biography instead of a review, a roster that repeats, and a second wave when everyone else has moved on. None of it is visible from any single post. All of it is visible from nine.</p>
+  <p class="big">A founder's account, an early-week slot, a biography instead of a review, a roster that repeats, and in the one launch we can see in full, a second wave when everyone else had moved on. None of it is visible from any single post. All of it is visible from nine.</p>
 </section>
 
 <section class="ch wide" id="data">
@@ -321,6 +322,8 @@ fetch('data.json').then(r=>r.json()).then(D=>{
   document.getElementById('n-vpf').textContent = Math.round(S.socap.median_views_per_follower)+'x';
   document.getElementById('n-vpf-b').textContent = Math.round(S.baseline.median_views_per_follower)+'x';
   const roster = D.roster.filter(r=>r.launches.length>1);
+  const top = roster[0];
+  document.getElementById('roster-copy').innerHTML = `${['','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten'][roster.length]||roster.length} accounts appear in more than one launch. One of them, <a href="https://x.com/${esc(top.author)}" target="_blank" rel="noopener">@${esc(top.author)}</a>, appears in ${['','one','two','three','four','five','six','seven','eight','nine'][top.launches.length]} of nine and wrote the biography in ${['','one','two','three','four','five','six','seven'][top.lore]}.`;
 
   // ---- 1. hero list: who posted, views ----
   (function(){
@@ -340,8 +343,8 @@ fetch('data.json').then(r=>r.json()).then(D=>{
     const g=svg.append('g').attr('class','grid');
     for(let h=0;h<=24;h+=6){ g.append('line').attr('x1',x(h)).attr('x2',x(h)).attr('y1',mt).attr('y2',H-mb); svg.append('text').attr('x',x(h)).attr('y',mt-10).attr('text-anchor',h===24?'end':h===0?'start':'middle').attr('class','faint').text(String(h).padStart(2,'0')+':00'); }
     dayNames.forEach(d=>{ g.append('line').attr('x1',ml).attr('x2',W-mr).attr('y1',y(d)+y.bandwidth()).attr('y2',y(d)+y.bandwidth()); svg.append('text').attr('x',ml-10).attr('y',y(d)+y.bandwidth()/2+4).attr('text-anchor','end').attr('class','lab').text(d); });
-    svg.append('text').attr('x',x(13)).attr('y',H-mb+20).attr('class','faint').text('13:00 UTC is 9am in New York, 6:30pm in India');
-    svg.append('text').attr('x',x(18)).attr('y',H-mb+38).attr('text-anchor','end').attr('class','faint').text('18:00 UTC is 2pm in New York');
+    svg.append('text').attr('x',x(13)).attr('y',H-mb+20).attr('class','faint').text('13:00 UTC is 8 or 9am in New York, 6:30pm in India');
+    svg.append('text').attr('x',x(18)).attr('y',H-mb+38).attr('text-anchor','end').attr('class','faint').text('18:00 UTC is 1 or 2pm in New York');
     const pts=[...L.map(l=>({label:l.client,dow:l.hero.dow,h:l.hero.utc_hour,g:'socap',sub:l.hero.created_at.slice(0,16).replace('T',' ')+' UTC'})),...B.map(b=>({label:b.label,dow:b.hero.dow,h:b.hero.utc_hour,g:'base',sub:b.hero.created_at.slice(0,16).replace('T',' ')+' UTC'}))];
     const seen={}; pts.forEach(p=>{const k=p.dow+Math.round(p.h*2); seen[k]=(seen[k]||0)+1; p._j=(seen[k]-1)*9;});
     const dots=svg.append('g').selectAll('circle').data(pts).join('circle').attr('cx',d=>x(d.h)).attr('cy',d=>y(d.dow)+y.bandwidth()/2+(d.g==='socap'?-5:5)+d._j).attr('r',6.5).attr('fill',d=>d.g==='socap'?'var(--blue)':'var(--gray)').attr('opacity',.85).style('cursor','default');

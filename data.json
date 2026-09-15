@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-15T15:05:02.382Z",
+ "generated_at": "2026-09-15T15:09:41.966Z",
  "launches": [
   {
    "slug": "playerzero",
@@ -2451,7 +2451,7 @@
   },
   "wave": {
    "posts": 96,
-   "accounts": 70,
+   "accounts": 69,
    "lore_posts": 6,
    "lore_launches": 6,
    "median_lore_views": 96952,
@@ -2518,18 +2518,6 @@
    ],
    "posts": 2,
    "views": 609775,
-   "lore": 0
-  },
-  {
-   "author": "a16z",
-   "name": "a16z",
-   "followers": 1076609,
-   "launches": [
-    "gamma",
-    "deel"
-   ],
-   "posts": 3,
-   "views": 269282,
    "lore": 0
   },
   {

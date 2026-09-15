@@ -38,9 +38,10 @@ const stats = {
     median_reply_rate: med(baseline.map(l => l.derived.reply_rate)), median_video_seconds: med(baseline.map(l => l.hero.video_seconds)),
     mon_tue_share: baseline.filter(l => ['Mon','Tue'].includes(l.hero.dow)).length / baseline.length },
 };
-// roster: account -> launches
+// roster: account -> launches. Investor accounts post about their own portfolio, so they are not part of a creator roster.
+const INVESTOR_ACCOUNTS = new Set(['a16z']);
 const roster = {};
-for (const l of launches) for (const p of l.wave) { (roster[p.author] = roster[p.author] || { author: p.author, name: p.author_name, followers: p.followers, launches: new Set(), posts: 0, views: 0, lore: 0 }); const r = roster[p.author]; r.launches.add(l.slug); r.posts++; r.views += p.views || 0; if (p.greentext) r.lore++; }
+for (const l of launches) for (const p of l.wave) { if (INVESTOR_ACCOUNTS.has(p.author)) continue; (roster[p.author] = roster[p.author] || { author: p.author, name: p.author_name, followers: p.followers, launches: new Set(), posts: 0, views: 0, lore: 0 }); const r = roster[p.author]; r.launches.add(l.slug); r.posts++; r.views += p.views || 0; if (p.greentext) r.lore++; }
 const rosterArr = Object.values(roster).map(r => ({ ...r, launches: [...r.launches] })).sort((a, b) => b.launches.length - a.launches.length || b.views - a.views);
 const allWave = launches.flatMap(l => l.wave.map(p => ({ ...p, slug: l.slug })));
 const lore = allWave.filter(p => p.greentext), nonLore = allWave.filter(p => !p.greentext && p.kind === 'post' && p.lag_h >= 0);
