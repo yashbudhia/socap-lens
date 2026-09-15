@@ -1,0 +1,225 @@
+{
+ "2036786452445741309": {
+  "id": "2036786452445741309",
+  "url": "https://x.com/Jacobsklug/status/2036786452445741309",
+  "author": "Jacobsklug",
+  "author_name": "Jacob Klug",
+  "followers": 33714,
+  "author_desc": "Building AI-native agencies. CEO @ https://Creme.digital",
+  "created_at": "2026-03-25T12:45:06.000Z",
+  "views": 13843,
+  "likes": 207,
+  "replies": 29,
+  "retweets": 19,
+  "quotes": 1,
+  "bookmarks": 297,
+  "text": "I run the #1 vibe coding agency. We've built 250+ apps for clients using AI.\n\nHere's the exact tech stack behind every build:\n\n1/ @Lovable\n\nThis is our main coding agent. It gets us off the ground faster than anything else. Great design out of the box. Backend and infrastructure setup from the jump. We go from idea to working prototype in hours, not weeks. Every client project starts here.\n\n2/ Supabase\n\nThis is our backend of choice. Database, APIs, security, and auth all in one platform. The real advantage? It's baked directly into Lovable. No extra config. No messy integrations. You connect it once and everything just works. For us it was the obvious choice.\n\n3/ Claude Cowork\n\nLovable handles basic testing on its own. But when you're shipping real products for real clients, you need more. PlayerZero lets us run advanced product cycle testing in one automated process. Fewer bugs. Faster QA. Clients never see a broken build.\n\n4/ Stripe\n\nEvery app we build that takes money runs through Stripe. Subscriptions, one time payments, invoicing. It plugs into Supabase cleanly and Lovable can scaffold the full checkout flow in minutes. Payments used to be the hardest part of shipping. Now it's one of the fastest.\n\n5/ Mixpanel\n\nYou can't improve what you don't measure. Mixpanel gives us event tracking, funnels, and retention data from day one. We wire it into every client app so they know exactly where users drop off and what's converting. Analytics isn't optional. It's how you prove the app works.\n\nThis stack lets a small team ship at the speed of a 50 person dev shop.\n\nNo bloated tools. No unnecessary complexity. Just five platforms that do the job.\n\nThat's how you build software in 2026.",
+  "lang": "en",
+  "is_note": true,
+  "media": [
+   {
+    "type": "photo",
+    "duration": null
+   }
+  ],
+  "replying_to": null,
+  "quote_of": null
+ },
+ "2036622018054136127": {
+  "id": "2036622018054136127",
+  "url": "https://x.com/prukalpa/status/2036622018054136127",
+  "author": "prukalpa",
+  "author_name": "Prukalpa ✨",
+  "followers": 39310,
+  "author_desc": "Cofounder @AtlanHQ, Context Layer for AI ✨prev founded @Social_Cops, built India’s National Data Platform, @wef tech pioneer",
+  "created_at": "2026-03-25T01:51:42.000Z",
+  "views": 7614,
+  "likes": 17,
+  "replies": 1,
+  "retweets": 2,
+  "quotes": 0,
+  "bookmarks": 18,
+  "text": "Well built context layers will close the gap between shiny AI demos and AI that’s useful. Congratulations to @akoratana and the PlayerZero team on the fundraise!",
+  "lang": "en",
+  "is_note": false,
+  "media": [],
+  "replying_to": null,
+  "quote_of": "2036111467016319074"
+ },
+ "2036478888403234980": {
+  "id": "2036478888403234980",
+  "url": "https://x.com/rezkhere/status/2036478888403234980",
+  "author": "rezkhere",
+  "author_name": "Rez Karim",
+  "followers": 38058,
+  "author_desc": "Giving your AI agents superpowers at @unsora_ai. I talk AI video, ads & prompt engineering.",
+  "created_at": "2026-03-24T16:22:57.000Z",
+  "views": 4305,
+  "likes": 21,
+  "replies": 5,
+  "retweets": 12,
+  "quotes": 0,
+  "bookmarks": 3,
+  "text": "We are so cooked...\n\nImagine sitting down to debug a live issue and having your entire org's collective reasoning behind you instantly.\n\nYes, this just happened.\n\nPlayerZero debugs, tests and fix your code on autopilot.\n\nAnd the craziest part isn't even the automation.\n\nIt's that it gets smarter the longer it runs.\n\nEvery incident it diagnoses teaches the model something new.\n\n- Which code paths are fragile\n- Which configs break under pressure\n- Which changes tend to blow up specific customer flows.\n\nThis one gives you compounding institutional memory.\n\n\"If we can't increase your engineering bandwidth by 20% in one week, we'll donate $10K to an open-source project of your choice.\"\n\nThat's how confident the PlayerZero team is.\n\n2026 is gonna be wild fr",
+  "lang": "en",
+  "is_note": true,
+  "media": [],
+  "replying_to": null,
+  "quote_of": "2036111467016319074"
+ },
+ "2036471581480984595": {
+  "id": "2036471581480984595",
+  "url": "https://x.com/abhijitwt/status/2036471581480984595",
+  "author": "abhijitwt",
+  "author_name": "Abhijit",
+  "followers": 9512,
+  "author_desc": "tech | startups | AI / DM for work/collabs\n\nhttps://isthereanytool.app",
+  "created_at": "2026-03-24T15:53:55.000Z",
+  "views": 2307,
+  "likes": 24,
+  "replies": 1,
+  "retweets": 2,
+  "quotes": 0,
+  "bookmarks": 4,
+  "text": "the natural order of AI twitter: \n\nanthropic drops feature -> startup dies ->  rip.\n\nwhat just happened: \n\nstartup drops feature -> claude looks expensive -> rip? \n\nPlayerZero just broke the script.",
+  "lang": "en",
+  "is_note": false,
+  "media": [
+   {
+    "type": "video",
+    "duration": 10.541
+   }
+  ],
+  "replying_to": null,
+  "quote_of": "2036111467016319074"
+ },
+ "2036131304773918827": {
+  "id": "2036131304773918827",
+  "url": "https://x.com/ramxcodes/status/2036131304773918827",
+  "author": "ramxcodes",
+  "author_name": "Ram",
+  "followers": 10570,
+  "author_desc": "21, Engineer",
+  "created_at": "2026-03-23T17:21:47.000Z",
+  "views": 4355,
+  "likes": 47,
+  "replies": 3,
+  "retweets": 0,
+  "quotes": 0,
+  "bookmarks": 6,
+  "text": "Hackers when they see PlayerZero fixing before they can even ruin something.",
+  "lang": "en",
+  "is_note": false,
+  "media": [
+   {
+    "type": "video",
+    "duration": 18.065
+   }
+  ],
+  "replying_to": null,
+  "quote_of": "2036111467016319074"
+ },
+ "2036123026136375355": {
+  "id": "2036123026136375355",
+  "url": "https://x.com/ai_for_success/status/2036123026136375355",
+  "author": "ai_for_success",
+  "author_name": "AshutoshShrivastava",
+  "followers": 81411,
+  "author_desc": "Post about latest AI news, tools, tutorials and memes.",
+  "created_at": "2026-03-23T16:48:53.000Z",
+  "views": 17493,
+  "likes": 101,
+  "replies": 2,
+  "retweets": 5,
+  "quotes": 0,
+  "bookmarks": 63,
+  "text": "Imagine being backed by the founders of Figma, Vercel, Dropbox, and Databricks.\n\nPlayerZero is working on something far more important that everyone else is ignoring: what happens after AI writes the code, where most of the time is actually spent.\n\nCongrats on the launch @akoratana and @playerzero_ai",
+  "lang": "en",
+  "is_note": true,
+  "media": [],
+  "replying_to": null,
+  "quote_of": "2036111467016319074"
+ },
+ "2036137446941847641": {
+  "id": "2036137446941847641",
+  "url": "https://x.com/Rothmus/status/2036137446941847641",
+  "author": "Rothmus",
+  "author_name": "Rothmus 🏴",
+  "followers": 672770,
+  "author_desc": "Rugged Individualism. Voluntaryism. Laissez-faire. Propertarianism.",
+  "created_at": "2026-03-23T17:46:11.000Z",
+  "views": 12987,
+  "likes": 31,
+  "replies": 3,
+  "retweets": 2,
+  "quotes": 0,
+  "bookmarks": 14,
+  "text": "Claude charges $25 per PR to find bugs.\n\nPlayerZero traces what actually breaks in production for $1 per PR.",
+  "lang": "en",
+  "is_note": false,
+  "media": [
+   {
+    "type": "video",
+    "duration": 11.901
+   }
+  ],
+  "replying_to": null,
+  "quote_of": "2036111467016319074"
+ },
+ "2036257402564255969": {
+  "id": "2036257402564255969",
+  "url": "https://x.com/TANANY_VC/status/2036257402564255969",
+  "author": "TANANY_VC",
+  "author_name": "田中 洸輝 🏈 More than a VC",
+  "followers": 5918,
+  "author_desc": "JAPAN VC ❘ 海外スタートアップや海外VC、起業情報発信\n6号ファンド200億円｜運用総額1,800億円(グロース含)\nインキュベイトファンド ← アクセンチュア & 起業 ← \n東京海上 ← 立教大学アメフト部第82代主将 大谷翔平世代",
+  "created_at": "2026-03-24T01:42:51.000Z",
+  "views": 21454,
+  "likes": 59,
+  "replies": 2,
+  "retweets": 7,
+  "quotes": 3,
+  "bookmarks": 46,
+  "text": "デバッグ/バグ修正を自動化するAIプラットフォーム PlayerZero 30億円調達\n\n1週間以内にエンジニアの工数を20%以上改善できなければ、好きなオープンソースプロジェクトへ150万円を寄付すると\n\nDatabricks、Vercel、Figma、Dropboxの創業者やCEOクラスがエンジェル出資",
+  "lang": "ja",
+  "is_note": false,
+  "media": [
+   {
+    "type": "video",
+    "duration": 27.413
+   }
+  ],
+  "replying_to": null,
+  "quote_of": "2036111467016319074"
+ },
+ "2036296030715842826": {
+  "id": "2036296030715842826",
+  "url": "https://x.com/kritarthmittal/status/2036296030715842826",
+  "author": "kritarthmittal",
+  "author_name": "Kritarth Mittal | Soshals",
+  "followers": 23964,
+  "author_desc": "engineering virality @soshalsapp | 200M+ views for clients • obsessing over • tech / growth / media",
+  "created_at": "2026-03-24T04:16:20.000Z",
+  "views": 68898,
+  "likes": 125,
+  "replies": 15,
+  "retweets": 4,
+  "quotes": 4,
+  "bookmarks": 61,
+  "text": "> be Animesh Koratana\n> spawn in Atlanta\n> dad is building a startup in the basement\n> puts you to work at age twelve\n> help the company go from 2 people to 50\n> get obsessed with software\n> win Intel ISEF as a teenager\n> win the Yale Science and Engineering Award\n> publish actual research at Johns Hopkins\n> all before college\n> head to Stanford for CS\n> work at THE dawn lab\n> publish ML research at ICML and NeurIPS\n> contribute to ChatGPT as a Stanford researcher\n> pandemic hits\n> professors tell you to leave Stanford\n> drop out\n> watch the entire industry lose its mind over AI code generation\n> you ask the only question that matters\n> who fixes it when all breaks down\n> build a solution and demo to Guillermo Rauch from Vercel\n> even the demo is running in production\n> \"if you can solve this it's a really big deal\"\n> Guillermo, Matei from Databricks, Drew Houston from Dropbox, and Dylan from Figma all write a check\n> raise $20 million\n> still 26 years old\n> ship the immune system for code\n\nAnimesh Koratana for you, ladies and gentlemen.",
+  "lang": "en",
+  "is_note": true,
+  "media": [
+   {
+    "type": "photo",
+    "duration": null
+   },
+   {
+    "type": "photo",
+    "duration": null
+   }
+  ],
+  "replying_to": null,
+  "quote_of": null
+ }
+}

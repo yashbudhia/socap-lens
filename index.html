@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Launch Ledger</title>
+<meta name="description" content="Every public Social Capital Inc launch, its hero post, and the creator wave around it, pulled from public X data. One non-obvious finding about how they work.">
+<style>
+:root{
+  color-scheme:light;
+  --bg:#f7f6f2;--surface:#fcfcfb;--line:#e3e1da;--line-2:#cfccc2;
+  --ink:#0b0b0b;--ink-2:#52514e;--ink-3:#7d7b74;
+  --s1:#2a78d6;--s2:#eb6834;--s3:#1baf7a;--gray:#a5a39b;
+  --s1-soft:#cde2fb;--s2-soft:#fbd9cb;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  color-scheme:dark;--bg:#141413;--surface:#1a1a19;--line:#2c2c2a;--line-2:#3d3d3a;
+  --ink:#ffffff;--ink-2:#c3c2b7;--ink-3:#8f8e86;--s1:#3987e5;--s2:#d95926;--s3:#199e70;--gray:#6b6a64;
+  --s1-soft:#1c3a63;--s2-soft:#5a2a17;}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#141413;--surface:#1a1a19;--line:#2c2c2a;--line-2:#3d3d3a;
+  --ink:#ffffff;--ink-2:#c3c2b7;--ink-3:#8f8e86;--s1:#3987e5;--s2:#d95926;--s3:#199e70;--gray:#6b6a64;--s1-soft:#1c3a63;--s2-soft:#5a2a17;}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{margin:0;font:15px/1.5 var(--sans);color:var(--ink);background:var(--bg);padding:0 16px;padding-block:0 64px}
+a{color:var(--s1);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:1120px;margin:0 auto}
+header{padding:40px 0 24px;border-bottom:1px solid var(--line)}
+.kicker{font:600 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+h1{font-size:clamp(28px,4vw,40px);line-height:1.1;margin:10px 0 8px;letter-spacing:-.02em}
+h2{font-size:22px;margin:0 0 6px;letter-spacing:-.01em}
+h3{font-size:15px;margin:0 0 4px}
+.lede{font-size:17px;color:var(--ink-2);max-width:760px;margin:0}
+section{padding:36px 0;border-bottom:1px solid var(--line)}
+.sub{color:var(--ink-2);margin:0 0 18px;max-width:760px}
+.insight{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--s2);padding:22px 24px;border-radius:6px}
+.insight p{margin:0 0 10px;font-size:17px}
+.insight ul{margin:8px 0 0;padding-left:20px}
+.insight li{margin:6px 0}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:18px}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:14px 16px}
+.tile .n{font:600 30px/1.05 var(--sans);letter-spacing:-.02em}
+.tile .n small{font-size:14px;font-weight:500;color:var(--ink-3);margin-left:6px}
+.tile .l{font-size:13px;color:var(--ink-2);margin-top:6px}
+.tile .c{font-size:12px;color:var(--ink-3);margin-top:2px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:16px}
+.chart{width:100%;height:auto;display:block;font-family:var(--sans)}
+.chart text{fill:var(--ink-2);font-size:12px}
+.chart .axis line,.chart .axis path{stroke:var(--line-2)}
+.chart .grid line{stroke:var(--line)}
+.chart .lab{fill:var(--ink);font-size:12px}
+.chart .muted{fill:var(--ink-3)}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--ink-2);margin:0 0 10px}
+.legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px;background:var(--c)}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--bg);padding:8px 10px;border-radius:4px;font-size:12px;line-height:1.4;max-width:320px;z-index:10;display:none;box-shadow:0 4px 16px rgba(0,0,0,.2)}
+.tip b{display:block;margin-bottom:2px}
+.tip .q{opacity:.8;white-space:pre-wrap}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--ink-2);cursor:pointer;white-space:nowrap;user-select:none;position:sticky;top:0;background:var(--surface)}
+th.num,td.num{text-align:right;font-variant-numeric:tabular-nums}
+th[data-sort]:after{content:" ↕";color:var(--ink-3);font-size:10px}
+th.asc:after{content:" ↑"}th.desc:after{content:" ↓"}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--surface);max-height:560px}
+.pill{display:inline-block;padding:1px 7px;border-radius:999px;font-size:11px;font-weight:600;background:var(--s2-soft);color:var(--ink)}
+.pill.b{background:var(--s1-soft)}
+.mono{font-family:var(--mono);font-size:12px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+select,input{font:inherit;padding:6px 8px;border:1px solid var(--line-2);border-radius:4px;background:var(--surface);color:var(--ink)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:760px){.grid2{grid-template-columns:1fr}}
+.matrix{display:grid;gap:2px;font-size:12px}
+.matrix .h{color:var(--ink-3);writing-mode:vertical-rl;transform:rotate(180deg);padding:4px 0;font-size:11px;align-self:end}
+.matrix .a{white-space:nowrap;padding-right:8px;color:var(--ink);align-self:center}
+.matrix .cell{height:22px;border-radius:3px;background:var(--line)}
+.matrix .cell.on{background:var(--s1)}
+.matrix .cell.lore{background:var(--s2)}
+.notes li{margin:6px 0;color:var(--ink-2)}
+footer{padding:24px 0;color:var(--ink-3);font-size:13px}
+.txt{white-space:pre-wrap;color:var(--ink-2);max-width:520px;font-size:12px}
+</style>
+</head>
+<body>
+<div class="tip" id="tip"></div>
+<div class="wrap">
+<header>
+  <div class="kicker">Public data study, built for the Social Capital technical generalist application</div>
+  <h1>Launch Ledger</h1>
+  <p class="lede">Every launch <a href="https://www.sociallcapital.com/work" target="_blank" rel="noopener">Social Capital Inc</a> lists publicly, its hero post, and the creator wave around it. Live numbers from public X data, a comparison set of nine launches that did not use them, and one thing the data says about how they actually work.</p>
+  <p class="sub" id="meta" style="margin-top:10px;font-size:13px"></p>
+</header>
+
+<section id="insight">
+  <h2>The finding</h2>
+  <div class="insight">
+    <p><strong>Social Capital does not amplify the product. It amplifies the founder's life story, on a schedule, through a small recurring roster.</strong></p>
+    <p>The hero post is on the founder's personal account in 7 of 9 launches. The highest-reach posts in the wave are not product reviews. They are greentext biographies of the founder ("be Karan Goel, spawn in Delhi") posted by the same handful of Indian tech-Twitter accounts, and one account, <a href="https://x.com/kritarthmittal" target="_blank" rel="noopener">@kritarthmittal</a>, shows up in 7 of the 9 launches. The wave is bimodal: a lore burst in the first 24 hours and a second, product-angle burst on day four, often landing within a three hour window.</p>
+    <ul id="insight-points"></ul>
+  </div>
+  <div class="tiles" id="tiles"></div>
+</section>
+
+<section id="ledger">
+  <h2>Launch ledger</h2>
+  <p class="sub">All nine case studies on the Social Capital work page, with the hero post's current public metrics. Click a header to sort.</p>
+  <div class="tablewrap"><table id="ledger-table"></table></div>
+</section>
+
+<section id="reach">
+  <h2>Reach does not depend on the founder's follower count</h2>
+  <p class="sub">Views on the hero post divided by the author's followers. A launch with no distribution network typically gets 5 to 50 views per follower. Social Capital launches on accounts with 7,000 to 40,000 followers get 100 to 400. That gap is the network.</p>
+  <div class="card">
+    <div class="legend"><span style="--c:var(--s1)">Social Capital launch</span><span style="--c:var(--gray)">Comparison launch (no agency)</span></div>
+    <svg id="reach-chart" class="chart" viewBox="0 0 1000 460" role="img" aria-label="Dot plot of views per follower for Social Capital and comparison launches"></svg>
+  </div>
+</section>
+
+<section id="clock">
+  <h2>The launch clock</h2>
+  <p class="sub">When each hero post went live. Social Capital posts land Monday or Tuesday in 8 of 9 cases and always between 13:00 and 18:00 UTC (9am to 2pm New York, 6:30pm to 11:30pm India). The comparison set is spread across the week. Reading: they front-load the week so the wave has Tuesday to Friday to run.</p>
+  <div class="card">
+    <div class="legend"><span style="--c:var(--s1)">Social Capital</span><span style="--c:var(--gray)">Comparison</span></div>
+    <svg id="clock-chart" class="chart" viewBox="0 0 1000 300" role="img" aria-label="Day of week by hour grid of hero post times"></svg>
+  </div>
+</section>
+
+<section id="wave">
+  <h2>The wave, hour by hour</h2>
+  <p class="sub">Public posts about each launch, plotted by hours after the hero post. Dot area is views. Orange dots are greentext founder biographies. Hover for the post. Wispr Flow has the most complete wave because it was collected from two sources; other launches show what X search surfaces on the first page for each window, so treat gaps as unknown rather than empty.</p>
+  <div class="card">
+    <div class="legend"><span style="--c:var(--s1)">Wave post</span><span style="--c:var(--s2)">Founder lore (greentext)</span><span style="--c:var(--ink-3)">Reply or quote</span></div>
+    <svg id="wave-chart" class="chart" viewBox="0 0 1000 600" role="img" aria-label="Timeline of wave posts per launch by hours after the hero post"></svg>
+  </div>
+</section>
+
+<section id="roster">
+  <h2>The roster</h2>
+  <p class="sub">Accounts that appear in more than one launch's wave. Orange means that account posted the greentext founder biography for that launch.</p>
+  <div class="grid2">
+    <div class="card"><div id="matrix" class="matrix"></div></div>
+    <div class="card">
+      <h3>Two scripts, two accounts, 46 hours apart</h3>
+      <p class="sub" style="font-size:13px">Cartesia wave, day three and day five. Same premise, same structure, different handle.</p>
+      <div id="twins"></div>
+    </div>
+  </div>
+</section>
+
+<section id="posts">
+  <h2>All wave posts</h2>
+  <div class="row">
+    <label>Launch <select id="f-launch"><option value="">All</option></select></label>
+    <label>Kind <select id="f-kind"><option value="">All</option><option value="lore">Founder lore</option><option value="post">Post</option><option value="reply">Reply or quote</option></select></label>
+    <input id="f-q" placeholder="Search text or handle" style="flex:1;min-width:200px">
+    <span id="f-count" class="mono"></span>
+  </div>
+  <div class="tablewrap"><table id="posts-table"></table></div>
+</section>
+
+<section id="method">
+  <h2>Method and limits</h2>
+  <ul class="notes">
+    <li><strong>Launch list.</strong> The nine case studies on sociallcapital.com/work as of 15 Sep 2026. Each page embeds one hero post; that post ID is the anchor for everything else.</li>
+    <li><strong>Metrics.</strong> Pulled from the public fxtwitter API (api.fxtwitter.com/status/ID), which returns views, likes, replies, reposts, quotes, bookmarks, author followers, and media duration without authentication. Numbers are as of the generated timestamp above, so older launches have had longer to accumulate.</li>
+    <li><strong>Wave posts.</strong> Found with X search restricted to a date window after each hero post, the product or founder name, and a minimum of 20 likes. X only reliably returns the first page of results per query, so each launch's wave is a sample of the most engaged posts, not a census. Wispr Flow additionally merges URLs from a public dataset another applicant compiled (github.com/atzgg132/waveline-socap); every post was re-fetched and re-verified here.</li>
+    <li><strong>Comparison set.</strong> Nine AI product launch posts from company or founder accounts with no known agency involvement: Cluely, Manus (two), Devin (three), Cursor (three). Chosen for being well known, not for being similar in size. Views per follower is the fair comparison; raw views are not.</li>
+    <li><strong>What "founder lore" means.</strong> A post whose body starts with greentext lines ("&gt; be X"). Detected by regex, then read by hand.</li>
+    <li><strong>What this cannot show.</strong> Whether any wave account was paid. Which posts were written in-house versus by the creator. LinkedIn, where Social Capital claims most of its reach, is not publicly searchable. The founder-lore pattern and the roster overlap are visible in public data; the mechanism behind them is inferred.</li>
+    <li><strong>Code.</strong> Static site plus three small Node scripts. No framework. Source on GitHub: <a id="repo-link" href="https://github.com/yashbudhia/socap-lens" target="_blank" rel="noopener">yashbudhia/socap-lens</a>.</li>
+  </ul>
+</section>
+
+<footer>Built by Yash Budhia. Not affiliated with Social Capital Inc. All data is public.</footer>
+</div>
+
+<script>
+const fmt = n => n == null ? '' : n >= 1e6 ? (n/1e6).toFixed(n>=1e7?0:1)+'M' : n >= 1e3 ? (n/1e3).toFixed(n>=1e4?0:1)+'K' : String(n);
+const pct = x => (x*100).toFixed(0)+'%';
+const esc = s => String(s??'').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const tip = document.getElementById('tip');
+function showTip(e, html){ tip.innerHTML = html; tip.style.display='block'; moveTip(e); }
+function moveTip(e){ const w = tip.offsetWidth, h = tip.offsetHeight; let x = e.clientX+14, y = e.clientY+14; if (x+w > innerWidth-8) x = e.clientX-w-14; if (y+h > innerHeight-8) y = e.clientY-h-14; tip.style.left=x+'px'; tip.style.top=y+'px'; }
+function hideTip(){ tip.style.display='none'; }
+const svgNS='http://www.w3.org/2000/svg';
+const el=(t,a={},txt)=>{const n=document.createElementNS(svgNS,t);for(const k in a)n.setAttribute(k,a[k]);if(txt!=null)n.textContent=txt;return n;};
+
+fetch('data.json').then(r=>r.json()).then(D=>{
+  const L=D.launches, B=D.baseline, S=D.stats;
+  document.getElementById('meta').textContent = `${L.length} launches, ${S.wave.posts} wave posts from ${S.wave.accounts} accounts, ${B.length} comparison launches. Metrics fetched ${new Date(D.generated_at).toUTCString().replace(' GMT',' UTC')}.`;
+
+  // insight points
+  const roster = D.roster.filter(r=>r.launches.length>1);
+  const top = D.roster[0];
+  const lore = L.flatMap(l=>l.wave.filter(p=>p.greentext).map(p=>({...p,client:l.client})));
+  const pts = [
+    `Founder-lore posts exist for ${S.wave.lore_launches} of ${L.length} launches. Median views on a lore post: ${fmt(S.wave.median_lore_views)}. Median for every other wave post: ${fmt(S.wave.median_other_views)}.`,
+    `${roster.length} accounts appear in two or more launch waves. @${top.author} appears in ${top.launches.length} (${top.launches.join(', ')}) and wrote the greentext in ${top.lore} of them.`,
+    `Hero posts land on the founder's own handle in ${L.filter(l=>l.hero_role==='founder').length} of ${L.length} launches, and ${L.filter(l=>['Mon','Tue'].includes(l.hero.dow)).length} of ${L.length} go out on a Monday or Tuesday.`,
+    `Wave posts by day after the hero: ${Object.entries(S.wave.day_buckets).map(([d,n])=>`day ${+d+1}: ${n}`).join(', ')}. Day one and day five carry it; days three and four are quiet.`,
+  ];
+  document.getElementById('insight-points').innerHTML = pts.map(p=>`<li>${p}</li>`).join('');
+
+  // tiles
+  const t = [
+    {n:fmt(S.socap.median_views_per_follower)+'x', l:'median views per follower on the hero post', c:`comparison launches: ${fmt(S.baseline.median_views_per_follower)}x`},
+    {n:`${L.filter(l=>['Mon','Tue'].includes(l.hero.dow)).length} of ${L.length}`, l:'hero posts on Monday or Tuesday', c:`comparison: ${B.filter(l=>['Mon','Tue'].includes(l.hero.dow)).length} of ${B.length}`},
+    {n:pct(S.socap.median_reply_rate), l:'median replies per like', c:`comparison: ${pct(S.baseline.median_reply_rate)}. Giveaways and "comment X" hooks do this.`},
+    {n:Math.round(S.socap.median_video_seconds)+'s', l:'median hero video length', c:`comparison: ${Math.round(S.baseline.median_video_seconds)}s. Not 60-second videos.`},
+    {n:fmt(S.socap.median_views), l:'median hero post views', c:`comparison: ${fmt(S.baseline.median_views)}, on accounts 10x larger`},
+  ];
+  document.getElementById('tiles').innerHTML = t.map(x=>`<div class="tile"><div class="n">${x.n}</div><div class="l">${x.l}</div><div class="c">${x.c}</div></div>`).join('');
+
+  // ledger
+  const cols=[
+    {k:'client',h:'Client',f:l=>`<a href="${l.case_study}" target="_blank" rel="noopener">${l.client}</a>`},
+    {k:'date',h:'Hero post',f:l=>`<span class="mono">${l.hero.created_at.slice(0,10)} ${l.hero.dow} ${l.hero.created_at.slice(11,16)}Z</span>`,v:l=>l.hero.created_at},
+    {k:'author',h:'Account',f:l=>`<a href="${l.hero.url}" target="_blank" rel="noopener">@${l.hero.author}</a> <span class="pill ${l.hero_role==='founder'?'b':''}">${l.hero_role}</span>`},
+    {k:'followers',h:'Followers',num:1,f:l=>fmt(l.hero.followers),v:l=>l.hero.followers},
+    {k:'views',h:'Views',num:1,f:l=>fmt(l.hero.views),v:l=>l.hero.views},
+    {k:'vpf',h:'Views / follower',num:1,f:l=>l.derived.views_per_follower.toFixed(0)+'x',v:l=>l.derived.views_per_follower},
+    {k:'likes',h:'Likes',num:1,f:l=>fmt(l.hero.likes),v:l=>l.hero.likes},
+    {k:'replies',h:'Replies',num:1,f:l=>fmt(l.hero.replies),v:l=>l.hero.replies},
+    {k:'rr',h:'Replies / like',num:1,f:l=>pct(l.derived.reply_rate),v:l=>l.derived.reply_rate},
+    {k:'bm',h:'Bookmarks',num:1,f:l=>fmt(l.hero.bookmarks),v:l=>l.hero.bookmarks},
+    {k:'vid',h:'Video',num:1,f:l=>l.hero.video_seconds?Math.round(l.hero.video_seconds)+'s':'none',v:l=>l.hero.video_seconds||0},
+    {k:'wave',h:'Wave posts found',num:1,f:l=>l.wave.length,v:l=>l.wave.length},
+    {k:'angle',h:'Angle',f:l=>l.angle},
+  ];
+  let sortK='date', sortD=-1;
+  function renderLedger(){
+    const rows=[...L].sort((a,b)=>{const c=cols.find(c=>c.k===sortK);const va=c.v?c.v(a):a[c.k], vb=c.v?c.v(b):b[c.k];return (va>vb?1:va<vb?-1:0)*sortD;});
+    document.getElementById('ledger-table').innerHTML = `<thead><tr>${cols.map(c=>`<th data-sort="${c.k}" class="${c.num?'num':''} ${sortK===c.k?(sortD>0?'asc':'desc'):''}">${c.h}</th>`).join('')}</tr></thead><tbody>${rows.map(l=>`<tr>${cols.map(c=>`<td class="${c.num?'num':''}">${c.f(l)}</td>`).join('')}</tr>`).join('')}</tbody>`;
+    document.querySelectorAll('#ledger-table th').forEach(th=>th.onclick=()=>{const k=th.dataset.sort; if(sortK===k) sortD*=-1; else {sortK=k; sortD=-1;} renderLedger();});
+  }
+  renderLedger();
+
+  // reach chart: horizontal dot plot, log x
+  (function(){
+    const svg=document.getElementById('reach-chart'); const W=1000,H=460, ml=170, mr=40, mt=20, mb=40;
+    const items=[...L.map(l=>({label:l.client,x:l.derived.views_per_follower,g:'socap',sub:`@${l.hero.author}, ${fmt(l.hero.followers)} followers, ${fmt(l.hero.views)} views`})),
+                 ...B.map(b=>({label:b.label,x:b.derived.views_per_follower,g:'base',sub:`@${b.hero.author}, ${fmt(b.hero.followers)} followers, ${fmt(b.hero.views)} views`}))].sort((a,b)=>b.x-a.x);
+    const xmin=1,xmax=2000; const sx=v=>ml+(Math.log10(v)-Math.log10(xmin))/(Math.log10(xmax)-Math.log10(xmin))*(W-ml-mr);
+    const rowH=(H-mt-mb)/items.length;
+    const g=el('g',{class:'grid'}); [1,10,100,1000].forEach(v=>{g.append(el('line',{x1:sx(v),x2:sx(v),y1:mt,y2:H-mb})); svg.append(el('text',{x:sx(v),y:H-mb+18,'text-anchor':'middle'},v+'x'));}); svg.append(g);
+    svg.append(el('text',{x:W-mr,y:H-8,'text-anchor':'end',class:'muted'},'views per follower, log scale'));
+    items.forEach((it,i)=>{
+      const y=mt+rowH*(i+.5); const c=it.g==='socap'?'var(--s1)':'var(--gray)';
+      svg.append(el('line',{x1:ml,x2:sx(it.x),y1:y,y2:y,stroke:c,'stroke-width':2,'stroke-opacity':.35}));
+      const dot=el('circle',{cx:sx(it.x),cy:y,r:6,fill:c,stroke:'var(--surface)','stroke-width':2});
+      svg.append(el('text',{x:ml-10,y:y+4,'text-anchor':'end',class:'lab'},it.label));
+      svg.append(el('text',{x:sx(it.x)+11,y:y+4,class:'muted'},it.x.toFixed(0)+'x'));
+      const hit=el('rect',{x:ml,y:y-rowH/2,width:W-ml-mr,height:rowH,fill:'transparent'});
+      hit.addEventListener('mousemove',e=>showTip(e,`<b>${esc(it.label)}</b>${esc(it.sub)}<br>${it.x.toFixed(0)} views per follower`)); hit.addEventListener('mouseleave',hideTip);
+      svg.append(dot,hit);
+    });
+  })();
+
+  // clock chart
+  (function(){
+    const svg=document.getElementById('clock-chart'); const W=1000,H=300, ml=60, mr=20, mt=30, mb=50;
+    const days=['Mon','Tue','Wed','Thu','Fri','Sat','Sun']; const rowH=(H-mt-mb)/7; const sx=h=>ml+h/24*(W-ml-mr);
+    const g=el('g',{class:'grid'});
+    for(let h=0;h<=24;h+=3){ g.append(el('line',{x1:sx(h),x2:sx(h),y1:mt,y2:H-mb})); svg.append(el('text',{x:sx(h),y:mt-10,'text-anchor':'middle'},String(h).padStart(2,'0')+':00 UTC')); }
+    days.forEach((d,i)=>{ g.append(el('line',{x1:ml,x2:W-mr,y1:mt+rowH*(i+1),y2:mt+rowH*(i+1)})); svg.append(el('text',{x:ml-10,y:mt+rowH*(i+.5)+4,'text-anchor':'end',class:'lab'},d)); });
+    svg.append(g);
+    // band 13-18 UTC
+    svg.append(el('rect',{x:sx(13),y:mt,width:sx(18)-sx(13),height:H-mt-mb,fill:'var(--s1)','fill-opacity':.07}));
+    svg.append(el('text',{x:sx(13)+4,y:H-mb-6,class:'muted'},'13:00 to 18:00 UTC: every Social Capital hero post'));
+    // second axis labels
+    [['9am NY',13],['2pm NY',18],['6:30pm IST',13],['11:30pm IST',18]].forEach(([l,h],i)=>{ svg.append(el('text',{x:sx(h),y:H-mb+18+(i>1?14:0),'text-anchor':'middle',class:'muted'},l)); });
+    const pts=[...L.map(l=>({label:l.client,dow:l.hero.dow,h:l.hero.utc_hour,g:'socap',sub:l.hero.created_at.slice(0,16).replace('T',' ')+' UTC'})),...B.map(b=>({label:b.label,dow:b.hero.dow,h:b.hero.utc_hour,g:'base',sub:b.hero.created_at.slice(0,16).replace('T',' ')+' UTC'}))];
+    // jitter overlapping
+    const seen={};
+    pts.forEach(p=>{ const key=p.dow+Math.round(p.h*2); seen[key]=(seen[key]||0)+1; const j=(seen[key]-1)*7; const y=mt+rowH*(days.indexOf(p.dow)+.5)+ (p.g==='socap'?-6:6) + j;
+      const c=el('circle',{cx:sx(p.h),cy:y,r:7,fill:p.g==='socap'?'var(--s1)':'var(--gray)',stroke:'var(--surface)','stroke-width':2});
+      c.addEventListener('mousemove',e=>showTip(e,`<b>${esc(p.label)}</b>${p.sub}`)); c.addEventListener('mouseleave',hideTip); svg.append(c); });
+  })();
+
+  // wave chart
+  (function(){
+    const svg=document.getElementById('wave-chart'); const W=1000,H=600, ml=110, mr=30, mt=30, mb=40; const maxH=170;
+    const rowH=(H-mt-mb)/L.length; const sx=h=>ml+Math.max(0,Math.min(maxH,h))/maxH*(W-ml-mr);
+    const g=el('g',{class:'grid'});
+    for(let d=0;d<=7;d++){ g.append(el('line',{x1:sx(d*24),x2:sx(d*24),y1:mt,y2:H-mb})); svg.append(el('text',{x:sx(d*24),y:mt-10,'text-anchor':'middle'},d===0?'hero':'day '+(d+1))); }
+    svg.append(g);
+    svg.append(el('text',{x:W-mr,y:H-10,'text-anchor':'end',class:'muted'},'hours after the hero post; the hero account's own thread and pre-launch posts are left out here but kept in the table below'));
+    L.forEach((l,i)=>{
+      const y=mt+rowH*(i+.5);
+      svg.append(el('line',{x1:ml,x2:W-mr,y1:y,y2:y,stroke:'var(--line)'}));
+      svg.append(el('text',{x:ml-10,y:y+4,'text-anchor':'end',class:'lab'},l.client));
+      const hero=el('rect',{x:sx(0)-4,y:y-9,width:8,height:18,fill:'var(--ink)',rx:2}); hero.addEventListener('mousemove',e=>showTip(e,`<b>Hero: @${l.hero.author}</b>${fmt(l.hero.views)} views<div class="q">${esc(l.hero.text.slice(0,220))}</div>`)); hero.addEventListener('mouseleave',hideTip); svg.append(hero);
+      const sorted=[...l.wave].filter(p=>p.lag_h>=0&&p.author.toLowerCase()!==l.hero.author.toLowerCase()).sort((a,b)=>(b.views||0)-(a.views||0));
+      sorted.forEach(p=>{
+        const r=Math.min(16,Math.max(3,Math.sqrt((p.views||1)/1400000)*16));
+        const c=p.greentext?'var(--s2)':p.kind==='reply'?'var(--ink-3)':'var(--s1)';
+        const dot=el('circle',{cx:sx(p.lag_h),cy:y,r,fill:c,'fill-opacity':.8,stroke:'var(--surface)','stroke-width':1.5});
+        dot.addEventListener('mousemove',e=>showTip(e,`<b>@${esc(p.author)} at +${p.lag_h}h</b>${fmt(p.views)} views, ${fmt(p.likes)} likes, ${fmt(p.followers)} followers<div class="q">${esc((p.text||'').slice(0,260))}</div>`)); dot.addEventListener('mouseleave',hideTip);
+        dot.addEventListener('click',()=>window.open(p.url,'_blank')); dot.style.cursor='pointer';
+        svg.append(dot);
+      });
+    });
+  })();
+
+  // roster matrix
+  (function(){
+    const m=document.getElementById('matrix'); const slugs=L.map(l=>l.slug);
+    m.style.gridTemplateColumns=`auto repeat(${slugs.length},22px)`;
+    m.append(Object.assign(document.createElement('div'),{className:'a',textContent:''}));
+    L.forEach(l=>{const h=document.createElement('div');h.className='h';h.textContent=l.client;m.append(h);});
+    roster.forEach(r=>{
+      const a=document.createElement('div'); a.className='a'; a.innerHTML=`<a href="https://x.com/${r.author}" target="_blank" rel="noopener">@${esc(r.author)}</a> <span class="mono" style="color:var(--ink-3)">${fmt(r.followers)}</span>`; m.append(a);
+      L.forEach(l=>{ const c=document.createElement('div'); const posts=l.wave.filter(p=>p.author===r.author); c.className='cell'+(posts.length?(posts.some(p=>p.greentext)?' lore':' on'):''); if(posts.length){c.title=posts.map(p=>`+${p.lag_h}h, ${fmt(p.views)} views`).join('; ');} m.append(c); });
+    });
+  })();
+
+  // twins
+  (function(){
+    const c=L.find(l=>l.slug==='cartesia'); if(!c) return;
+    const tw=c.wave.filter(p=>/acquire Cartesia/i.test(p.text||''));
+    document.getElementById('twins').innerHTML = tw.map(p=>`<div style="margin-bottom:12px"><div class="mono"><a href="${p.url}" target="_blank" rel="noopener">@${esc(p.author)}</a> at +${p.lag_h}h, ${fmt(p.views)} views</div><div class="txt">${esc((p.text||'').slice(0,240))}</div></div>`).join('') || '<p class="sub">Not found in the current dataset.</p>';
+  })();
+
+  // posts table
+  (function(){
+    const all=L.flatMap(l=>l.wave.map(p=>({...p,client:l.client,slug:l.slug}))).sort((a,b)=>a.slug.localeCompare(b.slug)||a.lag_h-b.lag_h);
+    const sel=document.getElementById('f-launch'); L.forEach(l=>sel.append(new Option(l.client,l.slug)));
+    const kind=document.getElementById('f-kind'), q=document.getElementById('f-q');
+    function render(){
+      const s=sel.value, k=kind.value, t=q.value.toLowerCase();
+      const rows=all.filter(p=>(!s||p.slug===s)&&(!k||p.kind===k)&&(!t||(p.text||'').toLowerCase().includes(t)||p.author.toLowerCase().includes(t)));
+      document.getElementById('f-count').textContent=rows.length+' posts';
+      document.getElementById('posts-table').innerHTML=`<thead><tr><th>Launch</th><th class="num">Hours after hero</th><th>Account</th><th class="num">Followers</th><th class="num">Views</th><th class="num">Likes</th><th>Kind</th><th>Text</th></tr></thead><tbody>${rows.map(p=>`<tr><td>${esc(p.client)}</td><td class="num mono">${p.lag_h>0?'+':''}${p.lag_h}</td><td><a href="${p.url}" target="_blank" rel="noopener">@${esc(p.author)}</a></td><td class="num">${fmt(p.followers)}</td><td class="num">${fmt(p.views)}</td><td class="num">${fmt(p.likes)}</td><td>${p.greentext?'<span class="pill">lore</span>':p.kind==='reply'?'<span class="mono">reply</span>':'post'}</td><td class="txt">${esc((p.text||'').slice(0,200))}</td></tr>`).join('')}</tbody>`;
+    }
+    [sel,kind].forEach(x=>x.onchange=render); q.oninput=render; render();
+  })();
+});
+</script>
+</body>
+</html>

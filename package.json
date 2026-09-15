@@ -1,0 +1,9 @@
+{
+  "name": "socap-lens",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "serve": "python -m http.server 8787"
+  }
+}
